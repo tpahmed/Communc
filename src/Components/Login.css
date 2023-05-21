@@ -1,0 +1,86 @@
+.Login{
+    position: absolute;
+    background-color: var(--container-background);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    left: 50%;
+    border-radius: .4em;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+
+.Login input,.Login button{
+    height: 3em;
+    transition: all .3s ease;
+    margin: 1em;
+    border: 0;
+    padding: .2em .2em .2em .6em;
+    font-size: 1.1em;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Login button{
+    width: 6em;
+    font-weight: 500;
+    background-color: var(--text);
+    cursor: pointer;
+    color: var(--container-background);
+    border: 2px solid var(--text);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Login button:hover{
+    background-color: var(--container-background);
+    color: var(--text);
+}
+.Login button{
+    width: 6em;
+}
+
+.Login input{
+    color: var(--text);
+    background-color: var(--secondary);
+    width: 60%;
+}
+.Login > div{
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: flex-start;
+}
+.Login > div > div{
+    margin: .5em;
+    margin-top: .2em;
+}
+
+.Login input::placeholder{
+    color: var(--text);
+    filter: opacity(70%);
+    -webkit-filter: opacity(70%);
+}
+
+.Login input:focus,.Login button:focus{
+    outline: 0;
+}

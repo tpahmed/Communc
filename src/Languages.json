@@ -1,0 +1,22 @@
+{
+    "ENG":{
+        "NavBar":{
+            "Open SideMenu":"Open SideMenu",
+            "Search":"Search",
+            "Close":"Close",
+            "Minimize":"Minimize",
+            "Maximize":"Maximize"
+        },
+        "SideBar":{
+            "Projects":"Projects",
+            "Messages":"Messages",
+            "Notifications":"Notifications",
+            "Account":"Account"
+        },
+        "Login":{
+            "Email":"Email",
+            "Password":"Password",
+            "Login":"Login"
+        }
+    }
+}

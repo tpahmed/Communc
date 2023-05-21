@@ -1,0 +1,122 @@
+.NavBar{
+    position: fixed;
+    display: flex;
+    top: 0;
+    width: 100%;
+    background-color: var(--container-background);
+    color: var(--text);
+    border-radius: .4em;
+    height: 2.5em;
+    justify-content: space-between;
+    user-select: none;
+    align-items: center;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+.NavBar > div{
+    display: flex;
+    height: 1.8em;
+    width: fit-content;
+    justify-content: space-between;
+    transition: all .3s ease;
+    align-items: center;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.NavBar > div svg path{
+    transition: all 0.3s ease;
+    
+}
+.NavBar > div svg:hover path:nth-child(2){
+    d: path("M 4 13.9998 C 4 13.4475 4.4477 12.9997 5 12.9997 L 16 13 C 22 13.11 23 12.6 23 14 C 23 14.5523 22.5523 15 22 15 L 5 14.9998 C 4.4477 14.9998 4 14.552 4 13.9998 Z");
+}
+.NavBar-Active-Hamburger  path:nth-child(2){
+    d: path("M 4 13.9998 C 4 13.4475 4.4477 12.9997 5 12.9997 L 16 13 C 22 13.11 23 12.6 23 14 C 23 14.5523 22.5523 15 22 15 L 5 14.9998 C 4.4477 14.9998 4 14.552 4 13.9998 Z");
+}
+.NavBar > div > div{
+    cursor: pointer;
+}
+.NavBar > div > div > input{
+    height: 2em;
+    width: 100%;
+    transition: all .3s ease;
+    border: 0;
+    background-color: var(--secondary);
+    padding: .2em .2em .2em .6em;
+    color: var(--text);
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.NavBar > div > div > input::placeholder{
+    color: var(--text);
+    
+}
+.NavBar > div > div > input:focus{
+    outline: 0;
+}
+.NavBar > div:first-of-type{
+    margin-left: 1em;
+}
+.NavBar > div:last-of-type{
+    margin-right: 1em;
+    width: 7em;
+}
+.NavBar > div:last-of-type > div{
+    transition: all .3s ease;
+    width: 1.5em;
+    height: 1.5em;
+    position: relative;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.NavBar > div:last-of-type > div:hover{
+    background-color: var(--text);
+}
+.NavBar > div:last-of-type > div > img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}
+
+
+@media screen and (min-width: 585px) {
+    .NavBar > div > div > input:hover{
+        width: 150%;
+    }
+    .NavBar > div > div > input:focus{
+        width: 150%;
+    }
+}
+@media screen and (min-width: 863px) {
+    .NavBar > div:first-of-type{
+        visibility: hidden;
+    }
+}

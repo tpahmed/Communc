@@ -1,0 +1,70 @@
+.SideBar{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5em .5em 1.5em .5em;
+    transition: all .3s ease;
+    top: calc(50% - 3.5em);
+    left: 1em;
+    width: fit-content;
+    height: 60%;
+    background-color: var(--container-background);
+    transform: translateY(calc(-50% + 3.5em));
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -webkit-transform: translateY(calc(-50% + 3.5em));
+    -moz-transform: translateY(calc(-50% + 3.5em));
+    -ms-transform: translateY(calc(-50% + 3.5em));
+    -o-transform: translateY(calc(-50% + 3.5em));
+}
+.SideBar > div{
+    cursor: pointer;
+    padding: .5em;
+    transition: all .3s ease;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.SideBar > div img{
+    width: 2em;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.SideBar > div:hover{
+    background-color: var(--text);
+}
+
+@media screen and (max-height: 385px) {
+    .SideBar{
+        height: calc(90% - 4.5em);
+        justify-content: space-between;
+    }
+    .SideBar > div img{
+        width: 1.5em;
+    }
+    .SideBar > div{
+        padding: .2em;
+    }
+}
+@media screen and (max-width: 863px) {
+    .SideBar{
+        left: -15%;
+    }
+}

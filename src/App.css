@@ -1,0 +1,53 @@
+.App{
+    background-color: var(--background);
+    color: var(--text);
+    height: 100vh;
+    width: 100%;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.W-Hub-CheckBox{
+    position: relative;
+    cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: var(--container-background);
+    border: 2px solid var(--text);
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+.W-Hub-CheckBox > div{
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: var(--text);
+    transition: all .15s ease;
+    left: 50%;
+    top: 50%;
+    border-radius: .2em;
+    transform: translateX(-50%) translateY(-50%) scale(100%);
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(100%);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(100%);
+    -ms-transform: translateX(-50%) translateY(-50%) scale(100%);
+    -o-transform: translateX(-50%) translateY(-50%) scale(100%);
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    -ms-border-radius: .2em;
+    -o-border-radius: .2em;
+    -webkit-transition: all .15s ease;
+    -moz-transition: all .15s ease;
+    -ms-transition: all .15s ease;
+    -o-transition: all .15s ease;
+    -webkit-filter: scale(50%);
+}
