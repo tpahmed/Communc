@@ -1,6 +1,21 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('./fonts/Lato.ttf');
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url('./fonts/Nunito.ttf');
+}
+
+:root{
+    --titles-font:'Lato';
+    --text-font:'Nunito';
+}
+
 .App{
     background-color: var(--background);
     color: var(--text);
+    font-family: var(--text-font);
     height: 100vh;
     width: 100%;
     border-radius: .4em;
@@ -14,6 +29,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 .W-Hub-CheckBox{
     position: relative;
     cursor: pointer;

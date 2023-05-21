@@ -70,5 +70,17 @@
     "red": "#f7768e",
     "green": "#9ece6a",
     "yellow": "#e0af68"
+  },
+  "Sepia": {
+    "primary": "#634C35",
+    "secondary": "#8F7D6B",
+    "accent": "#FFA080",
+    "background": "#CABDAF",
+    "container-background": "#B3A493",
+    "text": "#4D3D2B",
+    "link": "#B38763",
+    "red": "#E57373",
+    "green": "#81C784",
+    "yellow": "#FFD54F"
   }
 }

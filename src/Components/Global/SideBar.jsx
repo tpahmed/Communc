@@ -42,8 +42,8 @@ export default function SideBar() {
       <div>
           <img src={NBell} alt={Language[LANG].SideBar['Notifications']} style={{ 'filter':SVG_filter }} onClick={()=>Navigator('/')}/>
       </div>
-      <div>
-          <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }} onClick={()=>Navigator('/login')}/>
+      <div onClick={()=>Navigator('/login')}>
+          <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
       </div>
     </div>
   )

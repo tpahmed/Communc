@@ -57,6 +57,11 @@
 }
 .Login button{
     width: 6em;
+    font-family: var(--title);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Login input{
@@ -83,4 +88,18 @@
 
 .Login input:focus,.Login button:focus{
     outline: 0;
+}
+
+.Login span{
+    align-self: flex-end;
+    padding-right: 20%;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: -2%;
+}
+
+@media screen and (min-width: 898px) {
+    .Login{
+        width: 50%;
+    }
 }
