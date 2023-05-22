@@ -8,6 +8,7 @@ import { useState, useContext, useEffect } from 'react'
 import themeJSON from './Theme.json';
 import SideBar from './Components/Global/SideBar'
 import Login from './Components/Login';
+import SignUp from './Components/SignUp';
 
 function App() {
   // const [name,setName] = useState('');
@@ -34,6 +35,7 @@ function App() {
         <Routes>
           <Route index path='/' element={<></>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/signUp' element={<SignUp/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,105 @@
+.SignUp{
+    position: absolute;
+    background-color: var(--container-background);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    left: 50%;
+    border-radius: .4em;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+
+.SignUp input,.SignUp button{
+    height: 3em;
+    transition: all .3s ease;
+    margin: 1em;
+    border: 0;
+    padding: .2em .2em .2em .6em;
+    font-size: 1.1em;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.SignUp button{
+    width: 6em;
+    font-weight: 500;
+    background-color: var(--text);
+    cursor: pointer;
+    color: var(--container-background);
+    border: 2px solid var(--text);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.SignUp button:hover{
+    background-color: var(--container-background);
+    color: var(--text);
+}
+.SignUp button{
+    width: 6em;
+    font-family: var(--title);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignUp input{
+    color: var(--text);
+    background-color: var(--secondary);
+    width: 60%;
+}
+.SignUp > div{
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: flex-start;
+}
+.SignUp > div > div{
+    margin: .5em;
+    margin-top: .2em;
+}
+
+.SignUp input::placeholder{
+    color: var(--text);
+    filter: opacity(70%);
+    -webkit-filter: opacity(70%);
+}
+
+.SignUp input:focus,.SignUp button:focus{
+    outline: 0;
+}
+
+.SignUp span{
+    align-self: flex-end;
+    padding-right: 20%;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: -2%;
+}
+
+@media screen and (min-width: 898px) {
+    .SignUp{
+        width: 50%;
+    }
+}

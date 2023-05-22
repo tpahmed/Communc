@@ -45,6 +45,9 @@ export default function SideBar() {
       <div onClick={()=>Navigator('/login')}>
           <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
       </div>
+      <div onClick={()=>Navigator('/signUp')}>
+          <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
+      </div>
     </div>
   )
 }

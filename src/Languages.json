@@ -17,6 +17,14 @@
             "Email":"Email",
             "Password":"Password",
             "Login":"Login"
+        },
+        "SignUp":{
+            "Email":"Email",
+            "Password":"Create a password",
+            "Confirm Password":"Confirm password",
+            "Username":"Username",
+            "SignUp":"SignUp"
+
         }
     }
 }

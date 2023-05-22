@@ -5,6 +5,7 @@ import Language from '../Languages.json'
 import './Login.css';
 import { Main_Context } from "../Contexts/MainContext";
 
+
 export default function Login() {
     const [Account,setAccount] = useState({email:'',password:''});
     const [Remember,setRemember] = useState(false);
@@ -17,6 +18,8 @@ export default function Login() {
             <span>Forgot password</span>
             <div onClick={()=>setRemember(!Remember)}><div className="W-Hub-CheckBox"><div style={!Remember ? { 'transform' : 'translateX(-50%) translateY(-50%) scale(0)' } : null}></div></div> Remember me</div>
             <button>{Language[LANG]['Login']["Login"]}</button>
+            <button onClick={""}>{Language[LANG]['SignUp']['SignUp']}</button>
+
             
         </div>
     </Container>
