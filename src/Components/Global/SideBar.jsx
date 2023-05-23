@@ -26,11 +26,13 @@ export default function SideBar() {
   },[]);
   useEffect(()=>{
     if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
+    if(['/login','/signUp'].includes(location.pathname)){
         document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = '-25%');
     }
     else{
         document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = null);
     }
+  }
 },[location.pathname]);
   return (
     <div className="SideBar" style={SideBarActive ? { "left":"1em" } : null}>

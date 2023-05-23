@@ -19,6 +19,9 @@
             "Login":"Login"
         },
         "SignUp":{
+            "Photo":"Photo",
+            "First Name":"First name",
+            "Last Name":"Last name",
             "Email":"Email",
             "Password":"Create a password",
             "Confirm Password":"Confirm password",
