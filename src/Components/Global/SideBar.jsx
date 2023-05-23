@@ -24,7 +24,7 @@ export default function SideBar() {
     })
   },[]);
   useEffect(()=>{
-    if(['/login','/signup'].includes(location.pathname)){
+    if(['/login','/signUp'].includes(location.pathname)){
         document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = '-25%');
     }
     else{

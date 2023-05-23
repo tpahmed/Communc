@@ -24,7 +24,7 @@
 .SignUp input,.SignUp button{
     height: 3em;
     transition: all .3s ease;
-    margin: 1em;
+    margin: 10px;
     border: 0;
     padding: .2em .2em .2em .6em;
     font-size: 1.1em;
@@ -38,6 +38,18 @@
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
+
+.SignUp .name {
+    /* flex-direction: row; */
+    /* display: flex; */
+    /* width: 50%; */
+    /* margin: 0px; */
+    display: flex;
+    justify-content:left;
+    align-items: center;
+
+}
+
 .SignUp button{
     width: 6em;
     font-weight: 500;
@@ -86,9 +98,9 @@
     -webkit-filter: opacity(70%);
 }
 
-.SignUp input:focus,.SignUp button:focus{
+/* .SignUp input:focus,.SignUp button:focus{
     outline: 0;
-}
+} */
 
 .SignUp span{
     align-self: flex-end;
@@ -100,6 +112,17 @@
 
 @media screen and (min-width: 898px) {
     .SignUp{
-        width: 50%;
+        width: 90%;
     }
+} 
+
+.SignUp .name {
+    justify-content: space-between;
+    padding: 10px 0px;
+
+}
+
+.SignUp .name input {
+    margin: 0;
+    width: 45%;
 }

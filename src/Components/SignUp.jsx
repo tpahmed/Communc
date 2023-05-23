@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import Container from './Global/Container';
 import Language from '../Languages.json';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import "./SignUp.css";
 import { Main_Context } from "../Contexts/MainContext";
@@ -8,7 +9,7 @@ import { Main_Context } from "../Contexts/MainContext";
 
 export default function SignUp() {
     
-    const [AddAccount,setAddAccount] = useState({email:'',password:'', confirm_password:'', username:''});
+    const [AddAccount,setAddAccount] = useState({photo:'', first_name:'', laste_name:'',email:'',password:'', confirm_password:'', username:''});
     const [Confirm, setConfirm] = useState();
     const {LANG} = useContext(Main_Context);
     const confirm = ()=>{
@@ -22,6 +23,13 @@ export default function SignUp() {
   return (
     <Container>
         <div className='SignUp'>
+            <div className='image-input'>
+            </div>
+
+            <div className='name'>
+            <input className='first_name' type="text" placeholder={Language[LANG]['SignUp']['First Name']} value={AddAccount.first_name} onChange={(e)=>setAddAccount({...AddAccount, first_name:e.target.value})} />
+            <input className='last_name' type="text" placeholder={Language[LANG]['SignUp']['Last Name']} value={AddAccount.last_name} onChange={(e)=>setAddAccount({...AddAccount, last_name:e.target.value})} />
+            </div>
             <input type="text" placeholder={Language[LANG]['SignUp']['Username']} value={AddAccount.username} onChange={(e)=>setAddAccount({...AddAccount, username:e.target.value})} />
             <input type="text" placeholder={Language[LANG]['SignUp']['Email']} value={AddAccount.email} onChange={(e)=>setAddAccount({...AddAccount, email:e.target.value})} />
             <input type="password" placeholder={Language[LANG]['SignUp']['Password']} value={AddAccount.password} onChange={(e)=>setAddAccount({...AddAccount, password:e.target.value})} />
