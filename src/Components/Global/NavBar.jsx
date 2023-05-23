@@ -35,13 +35,12 @@ export default function NavBar() {
     },[]);
     useEffect(()=>{
         if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
-        if(['/login','/signUp'].includes(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');
+
         }
         else{
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = null);
         }
-    }
     },[location.pathname]);
   return (
     <nav  data-tauri-drag-region className="NavBar">
