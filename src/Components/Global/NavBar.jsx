@@ -34,7 +34,7 @@ export default function NavBar() {
         window.addEventListener('resize',()=>appWindow.isMaximized().then((val)=>document.querySelector('.NavBar').style.borderRadius = val ? '0' : '.4em .4em 0 0'))
     },[]);
     useEffect(()=>{
-        if(['/login','/signup'].includes(location.pathname)){
+        if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');
         }
         else{

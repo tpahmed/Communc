@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import { Main_Context } from './Contexts/MainContext'
 import NavBar from './Components/Global/NavBar'
@@ -9,6 +9,9 @@ import themeJSON from './Theme.json';
 import SideBar from './Components/Global/SideBar'
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
+import ForgotPass from './Components/ForgotPass';
+import Home from './Components/Home';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   // const [name,setName] = useState('');
@@ -32,11 +35,16 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <SideBar/>
-        <Routes>
-          <Route index path='/' element={<></>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signUp' element={<SignUp/>}/>
-        </Routes>
+        <AnimatePresence>
+          <Routes>
+              <Route index path='/' element={<Home/>}/>
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/signup' element={<SignUp/>}/>
+              <Route path='/forgot' element={<ForgotPass/>}/>
+              <Route path='/forgot/:param_email' element={<ForgotPass/>}/>
+              <Route path='*' element={<Navigate to={'/'}/>}/>
+          </Routes>
+        </AnimatePresence>
       </BrowserRouter>
     </div>
   )

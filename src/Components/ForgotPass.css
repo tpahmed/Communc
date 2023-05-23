@@ -1,4 +1,4 @@
-.Login{
+.ForgotPass{
     position: absolute;
     background-color: var(--container-background);
     display: flex;
@@ -7,21 +7,34 @@
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 100%;
+    height: 70%;
     left: 50%;
+    top: 50%;
     border-radius: .4em;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
     -webkit-border-radius: .4em;
     -moz-border-radius: .4em;
     -ms-border-radius: .4em;
     -o-border-radius: .4em;
 }
 
-.Login input,.Login button{
+.ForgotPass > div{
+    position: absolute;
+    font-family: var(--titles-font);
+    top: 5%;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2em;
+}
+
+.ForgotPass input,.ForgotPass button{
     height: 3em;
     transition: all .3s ease;
     margin: 1em;
@@ -38,85 +51,48 @@
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
-.Login button{
+.ForgotPass button{
     width: 6em;
-    font-weight: 500;
+    font-weight: 1000;
     background-color: var(--text);
     cursor: pointer;
     color: var(--container-background);
     border: 2px solid var(--text);
+    font-family: var(--title);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
-.Login button:hover{
+.ForgotPass button:hover{
     background-color: var(--container-background);
     color: var(--text);
 }
-.Login button{
-    width: 6em;
-    font-family: var(--title);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.Login input{
+.ForgotPass input{
     color: var(--text);
     background-color: var(--secondary);
-    width: 70%;
-}
-.Login > div{
-    display: flex;
-    width: 70%;
-    align-items: center;
-    justify-content: flex-start;
-}
-.Login > div > div{
-    margin: .5em;
-    margin-top: .2em;
+    width: 60%;
 }
 
-.Login input::placeholder{
+.ForgotPass input::placeholder{
     color: var(--text);
     filter: opacity(70%);
     -webkit-filter: opacity(70%);
 }
 
-.Login input:focus,.Login button:focus{
+.ForgotPass input:focus,.ForgotPass button:focus{
     outline: 0;
 }
 
-.Login span{
-    align-self: flex-end;
-    padding-right: 15%;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-top: -2%;
-}
-.Login b{
-    align-self: center;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-top: -3%;
-    font-size: .7em;
-}
-
-.Login-flash{
-    margin: 1.5em !important;
-    margin-bottom: .5em !important;
-    cursor: default !important;
-    font-size: 1em !important;
-    color: var(--accent);
-    text-decoration: none !important;
-    font-family: var(--titles-font) !important;
-}
 
 @media screen and (min-width: 898px) {
-    .Login{
+    .ForgotPass{
         width: 50%;
     }
 }

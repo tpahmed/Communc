@@ -3,10 +3,21 @@
     width: 80%;
     height: calc(99% - 4.5em);
     top: calc(50% + 1.25em);
+    /* transition: all .3s ease; */
     left: 50%;
+    overflow: hidden;
     transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     -o-transform: translateX(-50%) translateY(-50%);
+    /* -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease; */
+}
+.Container-Blur{
+    user-select: none;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
 }

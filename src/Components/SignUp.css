@@ -67,11 +67,11 @@
 .SignUp input{
     color: var(--text);
     background-color: var(--secondary);
-    width: 60%;
+    width: 70%;
 }
 .SignUp > div{
     display: flex;
-    width: 60%;
+    width: 70%;
     align-items: center;
     justify-content: flex-start;
 }
@@ -92,10 +92,18 @@
 
 .SignUp span{
     align-self: flex-end;
-    padding-right: 20%;
+    padding-right: 15%;
     text-decoration: underline;
     cursor: pointer;
     margin-top: -2%;
+}
+
+.SignUp b{
+    align-self: center;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: -2%;
+    font-size: .7em;
 }
 
 @media screen and (min-width: 898px) {

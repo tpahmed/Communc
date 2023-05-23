@@ -25,6 +25,20 @@
             "Username":"Username",
             "SignUp":"SignUp"
 
+        },
+        "ForgotPass":{
+            "Go Back":"Go Back",
+            "Email":"Email",
+            "Send":"Send",
+            "Go Back to Login":"Go Back to Login",
+            "Please enter Your new Password":"Please enter Your new Password",
+            "Password":"Password",
+            "Confirm Password":"Confirm Password",
+            "Change":"Change",
+            "Change Email":"Change Email",
+            "Please enter the code sent to ":"Please enter the code sent to ",
+            "Code":"Code",
+            "Validate":"Validate"
         }
     }
 }

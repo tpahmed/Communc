@@ -9,10 +9,11 @@ import Language from '../../Languages.json';
 import themeJSON from '../../Theme.json';
 import './SideBar.css';
 import { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
   const {LANG,THEME,SideBarActive} = useContext(Main_Context);
+  const location = useLocation();
   const HTF = CssFilterConverter.hexToFilter;
   const [SVG_filter] = useState(HTF(themeJSON[THEME].text).color);
   const Navigator = useNavigate();
@@ -24,7 +25,7 @@ export default function SideBar() {
     })
   },[]);
   useEffect(()=>{
-    if(['/login','/signup'].includes(location.pathname)){
+    if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
         document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = '-25%');
     }
     else{
@@ -43,9 +44,6 @@ export default function SideBar() {
           <img src={NBell} alt={Language[LANG].SideBar['Notifications']} style={{ 'filter':SVG_filter }} onClick={()=>Navigator('/')}/>
       </div>
       <div onClick={()=>Navigator('/login')}>
-          <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
-      </div>
-      <div onClick={()=>Navigator('/signUp')}>
           <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
       </div>
     </div>
