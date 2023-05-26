@@ -11,17 +11,23 @@ import { invoke } from "@tauri-apps/api";
 export default function Login() {
     const [Account,setAccount] = useState({email:'',password:''});
     const [Remember,setRemember] = useState(false);
-    const [flash,setFlash] = useState('')
-    const {LANG} = useContext(Main_Context);
+    const [flash,setFlash] = useState('');
+    const {LANG,SetLANG,SetTHEME} = useContext(Main_Context);
     const Navigator = useNavigate();
     const loginAction = async ()=>{
       const result = await invoke('login',Account);
       const result_json = JSON.parse(result);
       if (result_json.success){
         sessionStorage.setItem('token',result_json.msg.token);
+        sessionStorage.setItem('pfp',result_json.msg.pfp);
+        sessionStorage.setItem('params',JSON.stringify({'theme':result_json.msg.theme,'lang':result_json.msg.lang}));
         if (Remember){
           localStorage.setItem('token',result_json.msg.token);
+          sessionStorage.setItem('params',JSON.stringify({'theme':result_json.msg.theme,'lang':result_json.msg.lang}));
+          localStorage.setItem('pfp',result_json.msg.pfp);
         }
+        SetLANG(result_json.msg.lang);
+        SetTHEME(result_json.msg.theme);
         setFlash('');
         Navigator('/')
         return

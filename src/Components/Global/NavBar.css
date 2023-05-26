@@ -66,7 +66,7 @@
     outline: 0;
 }
 .NavBar > div:first-of-type{
-    margin-left: 1em;
+    width: 7em;
 }
 .NavBar > div:last-of-type{
     margin-right: 1em;
@@ -113,10 +113,5 @@
     }
     .NavBar > div > div > input:focus{
         width: 150%;
-    }
-}
-@media screen and (min-width: 863px) {
-    .NavBar > div:first-of-type{
-        visibility: hidden;
     }
 }

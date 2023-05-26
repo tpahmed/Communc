@@ -1,4 +1,4 @@
-import NBell from '../../assets/Notification-Bell.svg';
+import IFriends from '../../assets/Friends-Icon.svg';
 import { Main_Context } from '../../Contexts/MainContext';
 
 import DAccount from '../../assets/Account-Demo.svg';
@@ -12,13 +12,13 @@ import { useContext, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
-  const {LANG,THEME,SideBarActive} = useContext(Main_Context);
+  const {LANG,THEME} = useContext(Main_Context);
   const location = useLocation();
   const HTF = CssFilterConverter.hexToFilter;
-  const [SVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+  const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
   const Navigator = useNavigate();
   useEffect(()=>{
-    const TitleBarOPTS = document.querySelectorAll('.SideBar > div');
+    const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
     TitleBarOPTS.forEach((el)=>{
       el.addEventListener('mouseenter',(e)=>el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color);
       el.addEventListener('mouseleave',(e)=>el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color);
@@ -26,25 +26,54 @@ export default function SideBar() {
   },[]);
   useEffect(()=>{
     if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
-        document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = '-25%');
+        document.querySelectorAll('.SideBarContainer').forEach((e)=>e.style.marginLeft = '-25%');
     }
     else{
-        document.querySelectorAll('.SideBar').forEach((e)=>e.style.marginLeft = null);
+        document.querySelectorAll('.SideBarContainer').forEach((e)=>e.style.marginLeft = null);
     }
-},[location.pathname]);
+  },[location.pathname]);
+
+  useEffect(()=>{
+    SetSVG_filter(HTF(themeJSON[THEME].text).color);
+  },[THEME]);
   return (
-    <div className="SideBar" style={SideBarActive ? { "left":"1em" } : null}>
-      <div>
-          <img src={PCube} alt={Language[LANG].SideBar['Projects']} style={{ 'filter':SVG_filter }}/>
-      </div>
-      <div>
-          <img src={MBuble} alt={Language[LANG].SideBar['Messages']} style={{ 'filter':SVG_filter }}/>
-      </div>
-      <div>
-          <img src={NBell} alt={Language[LANG].SideBar['Notifications']} style={{ 'filter':SVG_filter }} onClick={()=>Navigator('/')}/>
-      </div>
-      <div onClick={()=>Navigator('/login')}>
-          <img src={DAccount} alt={Language[LANG].SideBar['Account']} style={{ 'filter':SVG_filter }}/>
+    <div className="SideBarContainer">
+      <div className="SideBar">
+
+        <div onClick={()=>Navigator('/projects')}>
+          <div>
+                <img src={PCube} alt={Language[LANG]['SideBar']['Projects']} style={{ 'filter':SVG_filter }}/>
+          </div>
+          <div>
+            {Language[LANG]['SideBar']['Projects']}
+          </div>
+        </div>
+
+
+        <div>
+          <div>
+              <img src={MBuble} alt={Language[LANG]['SideBar']['Messages']} style={{ 'filter':SVG_filter }}/>
+          </div>
+          <div>
+            {Language[LANG]['SideBar']['Messages']}
+          </div>
+        </div>
+        <div>
+          <div onClick={()=>Navigator('/friends')}>
+              <img src={IFriends} alt={Language[LANG]['SideBar']['Friends']} style={{ 'filter':SVG_filter }} />
+          </div>
+          <div>
+            {Language[LANG]['SideBar']['Friends']}
+          </div>
+        </div>
+        <div>
+          <div onClick={()=>Navigator('/login')}>
+              <img src={sessionStorage.getItem('pfp') ? sessionStorage.getItem('pfp') : DAccount} alt={Language[LANG]['SideBar']['Profile']} />
+          </div>
+          <div>
+            {Language[LANG]['SideBar']['Profile']}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,34 +1,93 @@
-.SideBar{
+.SideBarContainer{
+    z-index: 5;
+    user-select: none;
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5em .5em 1.5em .5em;
-    transition: all .3s ease;
-    top: calc(50% - 3.5em);
-    left: 1em;
-    width: fit-content;
+    left: -2.5em;
     height: 60%;
-    background-color: var(--container-background);
+    width: 5em;
+    top: calc(50% - 3.5em);
     transform: translateY(calc(-50% + 3.5em));
-    border-radius: .4em;
-    -webkit-border-radius: .4em;
-    -moz-border-radius: .4em;
-    -ms-border-radius: .4em;
-    -o-border-radius: .4em;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
     -webkit-transform: translateY(calc(-50% + 3.5em));
     -moz-transform: translateY(calc(-50% + 3.5em));
     -ms-transform: translateY(calc(-50% + 3.5em));
     -o-transform: translateY(calc(-50% + 3.5em));
 }
+
+.SideBar{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5em .5em 1.5em .5em;
+    transition: left .3s ease .1s, height .2s ease-in .1s, box-shadow .3s ease;
+    top: 50%;
+    height: 50%;
+    left:0;
+    width: 4em;
+    background-color: var(--container-background);
+    box-shadow: 10px 10px 10px rgba(0,0, 0, .0);
+    border-radius: .4em;
+    transform: translateY(-50%);
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: left .3s ease .1s, height .2s ease-in .1s, box-shadow .3s ease;
+    -moz-transition: left .3s ease .1s, height .2s ease-in .1s, box-shadow .3s ease;
+    -ms-transition: left .3s ease .1s, height .2s ease-in .1s, box-shadow .3s ease;
+    -o-transition: left .3s ease .1s, height .2s ease-in .1s, box-shadow .3s ease;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.SideBarContainer:hover > .SideBar{
+    left: 4.5em;
+    box-shadow: 10px 10px 10px rgba(0,0, 0, .5);
+    height: 100%;
+}
+.SideBarContainer:hover > .SideBar > div > div:first-of-type{
+    
+    opacity: 1;
+}
+.SideBarContainer:hover > .SideBar > div > div:last-of-type{
+    box-shadow: 10px 10px 10px rgba(0,0, 0, .5);
+}
+.SideBar:hover{
+    left: 4.5em;
+    height: 100%;
+}
 .SideBar > div{
+    display: flex;
+    align-items: center;
+
+}
+.SideBar:hover > div{
+    /* visibility: visible; */
+    opacity: 1;
+}
+.SideBar > div > div:first-of-type{
     cursor: pointer;
     padding: .5em;
+    transition: all .3s cubic-bezier(1,0,0,1) .1s;
+    opacity: 0;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s cubic-bezier(1,0,0,1) .1s;
+    -moz-transition: all .3s cubic-bezier(1,0,0,1) .1s;
+    -ms-transition: all .3s cubic-bezier(1,0,0,1) .1s;
+    -o-transition: all .3s cubic-bezier(1,0,0,1) .1s;
+}
+.SideBar > div > div:last-of-type{
+    position: relative;
+    padding: .5em 1em .5em 1em;
+    margin-left: 1.5em;
+    background-color: var(--container-background);
     transition: all .3s ease;
+    opacity: 0;
     border-radius: .4em;
     -webkit-border-radius: .4em;
     -moz-border-radius: .4em;
@@ -38,6 +97,9 @@
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
+}
+.SideBar > div > div:first-of-type:hover + div{
+    opacity: 1;
 }
 .SideBar > div img{
     width: 2em;
@@ -47,7 +109,14 @@
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
-.SideBar > div:hover{
+.SideBar > div img:last-of-type{
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+.SideBar > div > div:hover{
     background-color: var(--text);
 }
 
@@ -59,12 +128,7 @@
     .SideBar > div img{
         width: 1.5em;
     }
-    .SideBar > div{
+    .SideBar > div > div{
         padding: .2em;
-    }
-}
-@media screen and (max-width: 863px) {
-    .SideBar{
-        left: -15%;
     }
 }

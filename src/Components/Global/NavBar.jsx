@@ -13,12 +13,12 @@ import './NavBar.css';
 import { useLocation } from 'react-router-dom';
 
 export default function NavBar() {
-    const {LANG,THEME,SideBarActive,SetSideBarActive} = useContext(Main_Context);
+    const {LANG,THEME,SideBarActive,SetSideBarActive,Search,SetSearch} = useContext(Main_Context);
     const HTF = CssFilterConverter.hexToFilter;
     const location = useLocation();
 
-    const [Search,SetSearch] = useState('');
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+    const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
         const TitleBarOPTS = document.querySelectorAll('.NavBar > div:last-of-type > div');
 
@@ -36,23 +36,23 @@ export default function NavBar() {
     useEffect(()=>{
         if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');
-
         }
         else{
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = null);
+            
         }
+        SetSearchPH(Language['ENG']['NavBar']['Search in '+location.pathname.split('/')[1]])
     },[location.pathname]);
+    useEffect(()=>{
+        SetSVG_filter(HTF(themeJSON[THEME].text).color);
+    },[THEME]);
   return (
-    <nav  data-tauri-drag-region className="NavBar">
+    <nav data-tauri-drag-region className="NavBar">
         <div>
-            <div className={SideBarActive ? 'NavBar-Active-Hamburger' : ''} onClick={()=>SetSideBarActive(!SideBarActive)}>
-                {/* <img src={HMenu} alt={Language[LANG].NavBar['Open SideMenu']} style={{ 'filter':SVG_filter }} width={'30px'} /> */}
-                <HMenu style={{ width:'30px',height:'30px',filter:SVG_filter }}/>
-            </div>
         </div>
         <div>
             <div>
-                <input type="text" spellCheck="false" autoCorrect='false' autoComplete='false' value={Search} onChange={(e)=>SetSearch(e.target.value)} placeholder={Language[LANG].NavBar.Search} />
+                <input type="text" spellCheck="false" autoCorrect='false' autoComplete='false' value={Search} onChange={(e)=>SetSearch(e.target.value)} placeholder={SearchPH} />
             </div>
         </div>
         

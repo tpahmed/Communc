@@ -12,6 +12,7 @@ import SignUp from './Components/SignUp';
 import ForgotPass from './Components/ForgotPass';
 import Home from './Components/Home';
 import { AnimatePresence } from 'framer-motion';
+import Friends from './Components/Friends';
 
 function App() {
   // const [name,setName] = useState('');
@@ -37,12 +38,13 @@ function App() {
         <SideBar/>
         <AnimatePresence>
           <Routes>
-              <Route index path='/' element={<Home/>}/>
+              <Route index path='/projects' element={<Home/>}/>
+              <Route index path='/friends' element={<Friends/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/signup' element={<SignUp/>}/>
               <Route path='/forgot' element={<ForgotPass/>}/>
               <Route path='/forgot/:param_email' element={<ForgotPass/>}/>
-              <Route path='*' element={<Navigate to={'/'}/>}/>
+              <Route path='*' element={<Navigate to={'/projects'}/>}/>
           </Routes>
         </AnimatePresence>
       </BrowserRouter>

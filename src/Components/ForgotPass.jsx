@@ -7,6 +7,7 @@ import './ForgotPass.css';
 import CssFilterConverter from "css-filter-converter";
 import { useNavigate, useParams } from "react-router-dom";
 import Container from "./Global/Container";
+import { invoke } from "@tauri-apps/api";
 
 export default function ForgotPass() {
 
@@ -23,13 +24,42 @@ export default function ForgotPass() {
     const [validated,setValidated] = useState(false);
     const [password,setPassword] = useState('');
     const [Cpassword,setCPassword] = useState('');
+    const [flash,setFlash] = useState('');
     
     
-    function validate(){
+    async function validate(){
+
+        let result = JSON.parse(await invoke('check_recovery',{code,email}));
+        console.log(result);
+        if(!result.success){
+            return setFlash(Language[LANG]['ForgotPass']["Wrong code"])
+        }
+        setFlash('');
         setValidated(true);
     }
-    function send(){
+    async function changePass(){
+        if(password !== Cpassword){
+            return setFlash(Language[LANG]['ForgotPass']['Password Confirmation must be identical'])
+        }
+        let result = JSON.parse(await invoke('change_password',{code,email,password}));
+        if (!result.success){
+            return setFlash(Language[LANG]['ForgotPass']['Internal error please try again'])
+        }
+        Navigator('/login')
+        setFlash('');
+    }
+    async function send(){
+        if(!email || !emailRegex.test(email)){
+            return;
+        }
+        let result = JSON.parse(await invoke('forgot_pass',{email}));
+        if (!result.success){
+            setFlash(result.msg);
+            return;
+        }
+        
         setCode('');
+        setFlash('');
         Navigator('/forgot/'+email);
     }
     if (param_email && emailRegex.test(param_email)){
@@ -39,6 +69,7 @@ export default function ForgotPass() {
                     !validated ? (
                         <Container>
                             <div className="ForgotPass">
+                                <b className="Login-flash">{flash}</b>
                                 <div onClick={()=>Navigator('/forgot')}><img src={LArrow} alt={Language[LANG]['ForgotPass']["Change Email"]} style={{ 'filter':SVG_filter }} width={'25px'} />{Language[LANG]['ForgotPass']["Change Email"]}</div>
                                 <span>{Language[LANG]['ForgotPass']["Please enter the code sent to "]}<b style={{ 'color':'var(--accent)' }}>{param_email}</b></span>
                                 <input type="text" placeholder={Language[LANG]['ForgotPass']["Code"]} value={code} onChange={(e)=>setCode(!isNaN(Number(e.target.value)) ? e.target.value : code)}/>
@@ -48,11 +79,12 @@ export default function ForgotPass() {
                         ):(
                         <Container>
                             <div className="ForgotPass">
+                                <b className="Login-flash">{flash}</b>
                                 <div onClick={()=>Navigator('/login')}><img src={LArrow} alt={Language[LANG]['ForgotPass']["Go Back to Login"]} style={{ 'filter':SVG_filter }} width={'25px'} />{Language[LANG]['ForgotPass']["Go Back to Login"]}</div>
                                 <span>{Language[LANG]['ForgotPass']["Please enter Your new Password"]}</span>
                                 <input type="password" placeholder={Language[LANG]['ForgotPass']["Password"]} value={password} onChange={(e)=>setPassword(e.target.value)}/>
                                 <input type="password" placeholder={Language[LANG]['ForgotPass']["Confirm Password"]} value={Cpassword} onChange={(e)=>setCPassword(e.target.value)}/>
-                                <button>{Language[LANG]['ForgotPass']["Change"]}</button>
+                                <button onClick={changePass}>{Language[LANG]['ForgotPass']["Change"]}</button>
                             </div>
                         </Container>
                     )
@@ -64,6 +96,7 @@ export default function ForgotPass() {
     return (
     <Container>
         <div className="ForgotPass">
+            <b className="Login-flash">{flash}</b>
             <div onClick={()=>Navigator('/login')}><img src={LArrow} alt={Language[LANG]['ForgotPass']["Go Back"]} style={{ 'filter':SVG_filter }} width={'25px'} />{Language[LANG]['ForgotPass']["Go Back"]}</div>
             <input type="text" placeholder={Language[LANG]['ForgotPass']["Email"]} value={email} onChange={(e)=>setEmail(e.target.value)}/>
             <button onClick={send}>{Language[LANG]['ForgotPass']["Send"]}</button>

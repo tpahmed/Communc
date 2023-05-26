@@ -2,7 +2,9 @@
     "ENG":{
         "NavBar":{
             "Open SideMenu":"Open SideMenu",
-            "Search":"Search",
+            "Search in friends":"Search in friends",
+            "Search in projects":"Search in projects",
+            "Search in messages":"Search in messages",
             "Close":"Close",
             "Minimize":"Minimize",
             "Maximize":"Maximize"
@@ -10,8 +12,8 @@
         "SideBar":{
             "Projects":"Projects",
             "Messages":"Messages",
-            "Notifications":"Notifications",
-            "Account":"Account"
+            "Friends":"Friends",
+            "Profile":"Profile"
         },
         "Login":{
             "Email":"Email",
@@ -19,15 +21,16 @@
             "Login":"Login"
         },
         "SignUp":{
-            "Photo":"Photo",
+            "Profile picture":"Profile picture",
+            "Password Confirmation must be identical":"Password Confirmation must be identical",
             "First Name":"First name",
             "Last Name":"Last name",
             "Email":"Email",
             "Password":"Create a password",
             "Confirm Password":"Confirm password",
             "Username":"Username",
-            "SignUp":"SignUp"
-
+            "SignUp":"SignUp",
+            "All fields are required":"All fields are required"
         },
         "ForgotPass":{
             "Go Back":"Go Back",
@@ -40,8 +43,17 @@
             "Change":"Change",
             "Change Email":"Change Email",
             "Please enter the code sent to ":"Please enter the code sent to ",
+            "Password Confirmation must be identical":"Password Confirmation must be identical",
+            "Internal error please try again":"Internal error please try again",
             "Code":"Code",
+            "Wrong code":"Wrong code",
             "Validate":"Validate"
+        },
+        "Friends":{
+            "Your Friends":"Your Friends",
+            "Requests":"Requests",
+            "Add Friends":"Add Friends",
+            "Message":"Message"
         }
     }
 }

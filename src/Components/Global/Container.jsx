@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 export default function Container({children}) {
   const location = useLocation();
   const Navigator = useNavigate();
-  const {SideBarActive,SetSideBarActive} = useContext(Main_Context);
+  const {SetLANG,SetTHEME} = useContext(Main_Context);
   const check_token = ()=>{
     let token = sessionStorage.getItem('token');
     if(!token && !(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname))){
@@ -33,12 +33,15 @@ export default function Container({children}) {
   }
   useEffect(()=>{
     check_token();
-    SetSideBarActive(false)
+    if(localStorage.getItem('params')){
+      SetTHEME(JSON.parse(localStorage.getItem('params')).theme);
+      SetLANG(JSON.parse(localStorage.getItem('params')).lang);
+    }
   },[]);
   if (localStorage.getItem('token')){
     sessionStorage.setItem('token',localStorage.getItem('token'));
   }
   return (
-    <motion.div className={`Container ${SideBarActive ? 'Container-Blur' : ''}`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>
+    <motion.div className={`Container`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>
   )
 }
