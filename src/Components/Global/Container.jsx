@@ -33,9 +33,9 @@ export default function Container({children}) {
   }
   useEffect(()=>{
     check_token();
-    if(localStorage.getItem('params')){
-      SetTHEME(JSON.parse(localStorage.getItem('params')).theme);
-      SetLANG(JSON.parse(localStorage.getItem('params')).lang);
+    if(sessionStorage.getItem('params')){
+      SetTHEME(JSON.parse(sessionStorage.getItem('params')).theme);
+      SetLANG(JSON.parse(sessionStorage.getItem('params')).lang);
     }
   },[]);
   if (localStorage.getItem('token')){

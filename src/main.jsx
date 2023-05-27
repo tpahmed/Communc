@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client'
 import MainContext from './Contexts/MainContext'
 import App from './App'
 import './index.css'
+import ActionBarContext from './Contexts/ActionBarContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <MainContext>
-      <App />
+      <ActionBarContext>
+        <App />
+      </ActionBarContext>
     </MainContext>
   </React.StrictMode>,
 )

@@ -13,6 +13,7 @@ import ForgotPass from './Components/ForgotPass';
 import Home from './Components/Home';
 import { AnimatePresence } from 'framer-motion';
 import Friends from './Components/Friends';
+import ActionBar from './Components/Global/ActionBar';
 
 function App() {
   // const [name,setName] = useState('');
@@ -36,6 +37,7 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <SideBar/>
+        <ActionBar title={"test"} content={<div>test</div>}/>
         <AnimatePresence>
           <Routes>
               <Route index path='/projects' element={<Home/>}/>

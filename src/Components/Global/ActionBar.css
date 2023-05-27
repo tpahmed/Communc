@@ -1,0 +1,46 @@
+.ActionBar{
+    position: fixed;
+    background-color: var(--container-background);
+    height: calc(100% - 3em);
+    border-radius: .4em;
+    transition: all .3s ease;
+    width: 40%;
+    bottom: 0;
+    right: -40%;
+    z-index: 3;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.ActionBar-Active{
+    right: 0 !important;
+}
+.ActionBar-Title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .5em;
+}
+.ActionBar-Title > h3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ActionBar-Title > h3 > img{
+    margin-right: .3em;
+    cursor: pointer;
+}
+.ActionBar-Title > div{
+    display: flex;
+    justify-content: space-evenly;
+}
+.ActionBar-Content{
+    height: 90%;
+    margin: .5em;
+    padding: .5em;
+}

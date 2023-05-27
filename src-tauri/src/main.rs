@@ -52,9 +52,16 @@ async fn delete_Friend(token: &str,id: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+#[tauri::command]
+async fn send_friend_request(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/friends/request").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![login,check_token,forgot_pass,check_recovery,change_password,get_friends,delete_Friend])
+        .invoke_handler(tauri::generate_handler![login,check_token,forgot_pass,check_recovery,change_password,get_friends,delete_Friend,send_friend_request])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

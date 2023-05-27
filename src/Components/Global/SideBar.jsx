@@ -10,9 +10,11 @@ import themeJSON from '../../Theme.json';
 import './SideBar.css';
 import { useContext, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ActionBar_Context } from '../../Contexts/ActionBarContext';
 
 export default function SideBar() {
   const {LANG,THEME} = useContext(Main_Context);
+  const {SetActionBar_Active} = useContext(ActionBar_Context);
   const location = useLocation();
   const HTF = CssFilterConverter.hexToFilter;
   const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
@@ -31,6 +33,7 @@ export default function SideBar() {
     else{
         document.querySelectorAll('.SideBarContainer').forEach((e)=>e.style.marginLeft = null);
     }
+    SetActionBar_Active(0);
   },[location.pathname]);
 
   useEffect(()=>{

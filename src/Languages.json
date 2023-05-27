@@ -53,7 +53,12 @@
             "Your Friends":"Your Friends",
             "Requests":"Requests",
             "Add Friends":"Add Friends",
-            "Message":"Message"
+            "Message":"Message",
+            "Username":"Username"
+        },
+        "ActionBar":{
+            "Close":"Close"
         }
+
     }
 }
