@@ -53,8 +53,17 @@
             "Your Friends":"Your Friends",
             "Requests":"Requests",
             "Add Friends":"Add Friends",
+            "Add a new Friend":"Add a new Friend",
             "Message":"Message",
-            "Username":"Username"
+            "Username":"Username",
+            "Send friend request":"Send friend request",
+            "Cancel friend request":"Cancel friend request",
+            "User Not Found :(":"User Not Found :(",
+            "Decline friend request":"Decline friend request",
+            "Accept friend request":"Accept friend request",
+            "Incoming Requests":"Incoming Requests",
+            "No Friend Request Recieved":"No Friend Request Recieved"
+
         },
         "ActionBar":{
             "Close":"Close"

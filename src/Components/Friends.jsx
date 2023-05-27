@@ -2,7 +2,9 @@ import Container from "./Global/Container"
 import './Friends.css'
 import IMail from '../assets/Mail-Icon.svg';
 import IClose from '../assets/Close-Icon.svg';
+import IYes from '../assets/Yes-Icon.svg';
 import APlus from '../assets/Add-Plus.svg';
+import CSearch from '../assets/Search-Cross.svg';
 import { useContext, useEffect, useState } from "react";
 import Language from '../Languages.json';
 import CssFilterConverter from 'css-filter-converter';
@@ -10,24 +12,34 @@ import themeJSON from '../Theme.json';
 import { Main_Context } from "../Contexts/MainContext";
 import { invoke } from "@tauri-apps/api";
 import { ActionBar_Context } from "../Contexts/ActionBarContext";
+import { Friends_Context } from "../Contexts/FriendsContext";
 
-function AddFriend({friendList,Update}){
+function AddFriend(){
   const [AddfriendSearch,setAddfriendSearch] = useState('');
+  const {friendList,Update} = useContext(Friends_Context);
   const HTF = CssFilterConverter.hexToFilter;
   const {LANG,THEME} = useContext(Main_Context);
   function sendRequest(id){
     invoke('send_friend_request',{token:sessionStorage.getItem('token'),id:`${id}`});
     Update();
   }
+  
+  function cancelRequest(id){
+    invoke('friend_request_action',{token:sessionStorage.getItem('token'),id:`${id}`,action:'cancel'});
+    Update();
+  }
+  
+  
   return (
   <>
     <div>
       <span>{Language['ENG']["Friends"]['Username']} :</span>
-      <input type="text" value={AddfriendSearch} onChange={(e)=>setAddfriendSearch(e.target.value)}/>
+      <input className="Friends-Search" type="text" value={AddfriendSearch} onChange={(e)=>setAddfriendSearch(e.target.value)}/>
     </div>
     <ul className="Friends-List">
     {
-          friendList.filter((e)=>e.username.includes(AddfriendSearch)).map((e)=>
+          friendList.filter((e)=>e.username.includes(AddfriendSearch)).length ? 
+          friendList.sort((e)=>e.friend_requested ? -1 : 1).filter((e)=>e.username.includes(AddfriendSearch)).map((e)=>
             {
               if (!e.isfriend){
               return (
@@ -40,7 +52,15 @@ function AddFriend({friendList,Update}){
                   </div>
                 </div>
                 <div>
-                  <img src={APlus} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].green).color}} onClick={()=>sendRequest(e.id)} />
+                  {
+                    e.friend_requested ? (
+                        <img src={IClose} alt={Language['ENG']["Friends"]["Cancel friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>cancelRequest(e.id)} />
+                    )
+                    :
+                    (
+                      <img src={APlus} alt={Language['ENG']["Friends"]["Send friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].green).color}} onClick={()=>sendRequest(e.id)} />
+                    )
+                  }
                 </div>
               </li>
               )
@@ -48,6 +68,56 @@ function AddFriend({friendList,Update}){
               return 
             }
           )
+          :
+          <h3>{Language['ENG']["Friends"]["User Not Found :("]} <img src={CSearch} alt={Language['ENG']["Friends"]["User Not Found :("]} width={'60%'} style={{ filter: HTF(themeJSON[THEME].text).color}} /> </h3>
+        }
+    </ul>
+  </>
+  )
+}
+
+function FriendRequests(){
+  const {requestsList,Update} = useContext(Friends_Context);
+  const HTF = CssFilterConverter.hexToFilter;
+  const {LANG,THEME} = useContext(Main_Context);
+  
+  function declineRequest(id){
+    invoke('friend_request_action',{token:sessionStorage.getItem('token'),id:`${id}`,action:'decline'});
+    Update();
+  }
+  
+  function acceptRequest(id){
+    invoke('friend_request_action',{token:sessionStorage.getItem('token'),id:`${id}`,action:'accept'});
+    Update();
+  }
+  
+  
+  return (
+  <>
+    <ul className="Friends-List">
+    {
+          requestsList.length ? 
+          requestsList.map((e)=>
+            {
+              return (
+              <li key={e.id}>
+                <div>
+                  <img src={e.image} alt={e.username} width={'30px'} height={'30px'}/>
+                  <div>
+                    <span>{e.lname} {e.fname}</span>
+                    <span>@{e.username}</span>
+                  </div>
+                </div>
+                <div>
+                  <img src={IClose} alt={Language['ENG']["Friends"]["Decline friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>declineRequest(e.id)} />
+                  <img src={IYes} alt={Language['ENG']["Friends"]["Accept friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].green).color}} onClick={()=>acceptRequest(e.id)} />
+                </div>
+              </li>
+              )
+            }
+          )
+          :
+          <h3>{Language['ENG']["Friends"]["No Friend Request Recieved"]}</h3>
         }
     </ul>
   </>
@@ -56,9 +126,9 @@ function AddFriend({friendList,Update}){
 
 export default function Friends() {
   const {LANG,THEME} = useContext(Main_Context);
+  const {friendList,Update,requestsList} = useContext(Friends_Context);
   const {SetActionBar_title,SetActionBar_options,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
-
-  const [friendList,setfriendList] = useState([]);
+  
   const HTF = CssFilterConverter.hexToFilter;
   function delete_Friend(id){
     invoke('delete_Friend',{token:sessionStorage.getItem('token'),id:`${id}`});
@@ -67,16 +137,19 @@ export default function Friends() {
   useEffect(()=>{
     Update();
   },[]);
-  function Update(){
-    invoke('get_friends',{token:sessionStorage.getItem('token')}).then((e)=>{
-      setfriendList(JSON.parse(e).msg);
-    });
-  }
   function Add_Friends(){
-    SetActionBar_title(Language['ENG']["Friends"]['Add Friends']);
+    SetActionBar_title(Language['ENG']["Friends"]['Add a new Friend']);
     SetActionBar_options(<></>);
     SetActionBar_content(
-      <AddFriend friendList={friendList} Update={Update}/>
+      <AddFriend/>
+    )
+    SetActionBar_Active(1);
+  }
+  function Friend_requests(){
+    SetActionBar_title(Language['ENG']["Friends"]['Incoming Requests']);
+    SetActionBar_options(<></>);
+    SetActionBar_content(
+      <FriendRequests/>
     )
     SetActionBar_Active(1);
   }
@@ -86,7 +159,7 @@ export default function Friends() {
           <div className="Friends-Titles">
             <h2>{Language['ENG']["Friends"]['Your Friends']}</h2>
             <div>
-              <button>{Language['ENG']["Friends"]['Requests']}</button>
+              <button onClick={Friend_requests}>{Language['ENG']["Friends"]['Requests']} {requestsList.length ? <div className="Friends-Notification"><span>{requestsList.length}</span></div> : <></>}</button>
               <button onClick={Add_Friends}>{Language['ENG']["Friends"]['Add Friends']}</button>
             </div>
           </div>

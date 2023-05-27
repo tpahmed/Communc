@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--text);
-    padding: 0 2em 2em 0;
+    padding: 1em 2em 2em 0;
 }
 .Friends-Titles > h2{
     font-family: var(--titles-font);
@@ -62,6 +62,24 @@
 }
 .Friends-Titles > div button:last-of-type{
     background-color: var(--green);
+}
+
+.Friends-Notification{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+    font-size: .75em;
+    border-radius: 100%;
+    background-color: var(--accent);
+    top: -.75em;
+    right: -3em;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 
 .Friends-List{
@@ -111,6 +129,8 @@
 .Friends-List > li > div:last-of-type img{
     cursor: pointer;
 }
+
+
 .Friends-List > li > div img:last-of-type{
     margin-left: 1em;
 }
@@ -121,7 +141,51 @@
     justify-content: space-between;
     align-items: center;
 }
+.Friends-Search::placeholder{
+    color: var(--text);
+    filter: opacity(70%);
+    -webkit-filter: opacity(70%);
+}
+
+.Friends-Search:focus{
+    outline: 0;
+}
+
+.Friends-Search{
+    color: var(--text);
+    background-color: var(--secondary);
+    width: 55%;
+}
+
+.Friends-Search{
+    height: 1.75em;
+    transition: all .3s ease;
+    margin: 1em;
+    border: 0;
+    padding: .2em .2em .2em .6em;
+    font-size: 1.1em;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
 .Friends-List > li > div:first-of-type > div span:last-of-type{
     font-size: .7em;
     color: var(--link);
+}
+.Friends-List h3{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    top: 30%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 }
