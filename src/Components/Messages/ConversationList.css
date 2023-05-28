@@ -1,0 +1,38 @@
+.ConversationList{
+    position: relative;
+    height: 85%;
+    width: 35%;
+    max-width: 35%;
+    overflow-y: auto;
+}
+.ConversationList > li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all .3s ease;
+    padding: .5em;
+    margin: .25em;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.ConversationList-selected{
+    background-color: var(--container-background);
+}
+.ConversationList > li:hover{
+    background-color: var(--container-background);
+}
+.ConversationList img{
+    margin-right: .7em;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}

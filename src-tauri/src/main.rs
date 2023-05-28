@@ -73,9 +73,30 @@ async fn get_friend_requests(token: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+#[tauri::command]
+async fn get_conversations(token: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/conversation/get").form(&[("token",token)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+#[tauri::command]
+async fn get_conversation_messages(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/messages/get").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![login,check_token,forgot_pass,check_recovery,change_password,get_friends,delete_Friend,send_friend_request,friend_request_action,get_friend_requests])
+        .invoke_handler(tauri::generate_handler![
+            login,check_token,forgot_pass,
+            check_recovery,change_password,
+            get_friends,delete_Friend,
+            send_friend_request,friend_request_action,
+            get_friend_requests,get_conversations,
+            get_conversation_messages
+            ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

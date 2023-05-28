@@ -7,15 +7,26 @@
     src: url('./fonts/Nunito.ttf');
 }
 
+#root{
+    background-color: var(--background);
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+
 :root{
     --titles-font:'Lato';
     --text-font:'Nunito';
 }
 
+
 .App{
     background-color: var(--background);
     color: var(--text);
     font-family: var(--text-font);
+    user-select: none;
     overflow: hidden;
     height: 100vh;
     width: 100%;
@@ -66,4 +77,22 @@
     -moz-transition: all .15s ease;
     -ms-transition: all .15s ease;
     -o-transition: all .15s ease;
+}
+
+
+::-webkit-scrollbar{
+    background-color: var(--background);
+    width: .5em;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--container-background);
+    opacity: .6;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+::-webkit-scrollbar-thumb:hover{
+    opacity: 1;
 }

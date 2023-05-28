@@ -1,0 +1,75 @@
+.Messages{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: .4em;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+}
+
+.Messages-Titles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--text);
+    padding: 1em 2em 2em 0;
+}
+.Messages-Titles > h2{
+    font-family: var(--titles-font);
+}
+.Messages-Titles > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Messages-Titles > div button{
+    cursor: pointer;
+    padding: .3em 1.5em .3em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    width: 10em;
+    margin-left: 1em;
+    border: 0;
+    filter: brightness(100%);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Messages-Titles > div button:hover{
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+}
+.Messages-Titles > div button{
+    background-color: var(--green);
+}
+.Messages-Content{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+.Messages-Separator{
+    /* position: absolute; */
+    width: 1px;
+    height: 100%;
+    margin: .5em;
+    margin-top: 2%;
+    background-color: var(--text);
+}

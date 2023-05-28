@@ -1,0 +1,78 @@
+.ConversationMessages{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 65%;
+    height: 85%;
+}
+.ConversationMessages > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary);
+    padding: .3em;
+    border: 1px solid var(--text);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.ConversationMessages > div > img{
+    cursor: pointer;
+    margin: .3em;
+}
+.ConversationMessages > div > input {
+    background-color: var(--secondary);
+    border: 0;
+    width: 100%;
+    color: var(--text);
+    font-size: 1em;
+    height: 100%;
+    padding-left: .3em;
+}
+.ConversationMessages > div > input:focus {
+    outline: 0;
+}
+.ConversationMessages-title{
+    display: flex;
+    justify-content: space-between;
+}
+.ConversationMessages-title span:first-of-type{
+    color: var(--green);
+    font-family: var(--titles-font);
+}
+.ConversationMessages-title span:last-of-type{
+    color: var(--background);
+}
+.ConversationMessages > ul{
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-height: 80%;
+}
+.ConversationMessages-Message-You , .ConversationMessages-Message{
+    background-color: var(--secondary);
+    padding: .7em;
+    width: fit-content;
+    max-width: 65%;
+}
+.ConversationMessages-Message-You{
+    align-self: flex-end;
+    border-radius: .5em 0 .5em 0;
+    -webkit-border-radius: .5em 0 .5em 0;
+    -moz-border-radius: .5em 0 .5em 0;
+    -ms-border-radius: .5em 0 .5em 0;
+    -o-border-radius: .5em 0 .5em 0;
+}
+.ConversationMessages-Message{
+    border-radius: 0 .5em 0 .5em;
+    -webkit-border-radius: 0 .5em 0 .5em;
+    -moz-border-radius: 0 .5em 0 .5em;
+    -ms-border-radius: 0 .5em 0 .5em;
+    -o-border-radius: 0 .5em 0 .5em;
+}
+
+

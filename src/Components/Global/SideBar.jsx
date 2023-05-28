@@ -22,8 +22,9 @@ export default function SideBar() {
   useEffect(()=>{
     const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
     TitleBarOPTS.forEach((el)=>{
-      el.addEventListener('mouseenter',(e)=>el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color);
-      el.addEventListener('mouseleave',(e)=>el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color);
+      
+      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color});
+      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color});
     })
   },[]);
   useEffect(()=>{
@@ -38,6 +39,12 @@ export default function SideBar() {
 
   useEffect(()=>{
     SetSVG_filter(HTF(themeJSON[THEME].text).color);
+    const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
+    TitleBarOPTS.forEach((el)=>{
+      
+      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color});
+      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color});
+    })
   },[THEME]);
   return (
     <div className="SideBarContainer">
@@ -54,7 +61,7 @@ export default function SideBar() {
 
 
         <div>
-          <div>
+          <div onClick={()=>Navigator('/messages')}>
               <img src={MBuble} alt={Language[LANG]['SideBar']['Messages']} style={{ 'filter':SVG_filter }}/>
           </div>
           <div>
