@@ -14,7 +14,7 @@ export default function MessagesContext({children}) {
     }
     function LoadMessages(){
       invoke('get_conversation_messages',{token:sessionStorage.getItem('token'),id:`${selected}`}).then((e)=>{
-        setConversationsMessages(JSON.parse(e).msg)
+        setConversationsMessages(JSON.parse(e).msg.reverse())
       });
     }
     useEffect(()=>{
@@ -24,7 +24,7 @@ export default function MessagesContext({children}) {
     },[selected]);
 
   return (
-    <Messages_Context.Provider value={{ selected,Setselected,Conversations,Update,ConversationMessages }}>
+    <Messages_Context.Provider value={{ selected,Setselected,Conversations,Update,ConversationMessages,LoadMessages }}>
       {children}
     </Messages_Context.Provider>
   )

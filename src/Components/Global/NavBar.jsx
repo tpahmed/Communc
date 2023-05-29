@@ -20,6 +20,7 @@ export default function NavBar() {
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
+        SetSVG_filter(HTF(themeJSON[THEME].text).color);
         const TitleBarOPTS = document.querySelectorAll('.NavBar > div:last-of-type > div');
 
         TitleBarOPTS[0].addEventListener('mouseenter',(e)=>{
@@ -32,7 +33,7 @@ export default function NavBar() {
         TitleBarOPTS[2].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = HTF(themeJSON[THEME].red).color +  ' drop-shadow(1px 1px 2px var(--red))'});
         TitleBarOPTS[2].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = SVG_filter});
         window.addEventListener('resize',()=>appWindow.isMaximized().then((val)=>document.querySelector('.NavBar').style.borderRadius = val ? '0' : '.4em .4em 0 0'))
-    },[]);
+    },[THEME]);
     useEffect(()=>{
         if(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');
@@ -43,9 +44,6 @@ export default function NavBar() {
         }
         SetSearchPH(Language['ENG']['NavBar']['Search in '+location.pathname.split('/')[1]])
     },[location.pathname]);
-    useEffect(()=>{
-        SetSVG_filter(HTF(themeJSON[THEME].text).color);
-    },[THEME]);
   return (
     <nav data-tauri-drag-region className="NavBar">
         <div>

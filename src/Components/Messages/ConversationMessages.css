@@ -2,11 +2,16 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    user-select: text;
     width: 65%;
-    height: 85%;
+    height: 90%;
 }
 .ConversationMessages > div {
+    position: relative;
+    bottom: 0;
+    height: 3em;
+    margin-top: 2em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,17 +55,20 @@
     list-style: none;
     display: flex;
     align-items: flex-start;
+    flex-direction: column-reverse;
     width: 100%;
-    max-height: 80%;
+    height: calc(80% - 3em);
+    overflow-y: auto;
 }
 .ConversationMessages-Message-You , .ConversationMessages-Message{
     background-color: var(--secondary);
+    margin: .5em;
     padding: .7em;
     width: fit-content;
     max-width: 65%;
 }
 .ConversationMessages-Message-You{
-    align-self: flex-end;
+    align-self: flex-end !important;
     border-radius: .5em 0 .5em 0;
     -webkit-border-radius: .5em 0 .5em 0;
     -moz-border-radius: .5em 0 .5em 0;

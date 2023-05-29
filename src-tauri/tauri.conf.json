@@ -36,7 +36,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.whub.dev",
       "targets": "all"
     },
     "security": {
@@ -53,7 +53,9 @@
         "resizable": true,
         "title": "W-HUB",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "minWidth": 535,
+        "minHeight":575
       }
     ]
   }

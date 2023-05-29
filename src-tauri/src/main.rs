@@ -87,6 +87,13 @@ async fn get_conversation_messages(token: &str,id: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+#[tauri::command]
+async fn send_message(token: &str,id: &str,msg_type: &str,content: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/messages/send").form(&[("token",token),("id",id),("type",msg_type),("content",content)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -95,7 +102,7 @@ fn main() {
             get_friends,delete_Friend,
             send_friend_request,friend_request_action,
             get_friend_requests,get_conversations,
-            get_conversation_messages
+            get_conversation_messages,send_message
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

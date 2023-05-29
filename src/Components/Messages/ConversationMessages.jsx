@@ -7,13 +7,21 @@ import { Messages_Context } from '../../Contexts/MessagesContext'
 import CssFilterConverter from 'css-filter-converter';
 import { Main_Context } from '../../Contexts/MainContext';
 import './ConversationMessages.css'
+import { invoke } from '@tauri-apps/api';
 
 export default function ConversationMessages() {
-    const {ConversationMessages} = useContext(Messages_Context);
+    const {ConversationMessages,selected,LoadMessages} = useContext(Messages_Context);
     const {LANG,THEME} = useContext(Main_Context);
     const [Message,setMessage] = useState('');
     const HTF = CssFilterConverter.hexToFilter;
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+    async function sendMessage(){
+        if (Message){
+            await invoke('send_message',{token:sessionStorage.getItem('token'),id:`${selected}`,msgType:"text",content:Message});
+            setMessage('');
+            LoadMessages();
+        }
+    }
   return (
     <div className='ConversationMessages'>
         <ul>
@@ -39,8 +47,8 @@ export default function ConversationMessages() {
         </ul>
         <div>
             <img src={IImage} alt={Language['ENG']['ConversationMessages']['Send Image']} style={{ filter:SVG_filter }}/>
-            <input type="text" value={Message} onChange={(e)=>setMessage(e.target.value)} />
-            <img src={PPlane} alt={Language['ENG']['ConversationMessages']['Send']} style={{ filter:SVG_filter }} />
+            <input onKeyDown={(e)=>e.key == 'Enter' ? sendMessage() : null} type="text" value={Message} onChange={(e)=>setMessage(e.target.value)} />
+            <img onClick={sendMessage} src={PPlane} alt={Language['ENG']['ConversationMessages']['Send']} style={{ filter:SVG_filter }} />
         </div>
     </div>
   )

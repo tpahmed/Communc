@@ -83,10 +83,13 @@
 ::-webkit-scrollbar{
     background-color: var(--background);
     width: .5em;
+    height: .5em;
+}
+::-webkit-scrollbar-corner{
+    
 }
 ::-webkit-scrollbar-thumb{
     background-color: var(--container-background);
-    opacity: .6;
     border-radius: .3em;
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
