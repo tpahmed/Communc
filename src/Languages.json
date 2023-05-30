@@ -75,7 +75,8 @@
         "ConversationMessages":{
             "Send":"Send",
             "Send Image":"Send Image",
-            "You":"You"
+            "You":"You",
+            "Image Preview":"Image Preview"
         }
 
     }

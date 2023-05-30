@@ -42,6 +42,7 @@ export default function SignUp() {
                 sessionStorage.setItem('pfp',res.data.msg.pfp);
                 localStorage.setItem('pfp',res.data.msg.pfp);
                 sessionStorage.setItem('params',JSON.stringify({'theme':res.data.msg.theme,'lang':res.data.msg.lang}));
+                localStorage.setItem('params',JSON.stringify({'theme':res.data.msg.theme,'lang':res.data.msg.lang}));
                 SetLANG(res.data.msg.lang);
                 SetTHEME(res.data.msg.theme);
                 setFlash('');
@@ -58,7 +59,7 @@ export default function SignUp() {
         <div className='SignUp'>
             <b className="Login-flash">{flash}</b>
             <div className='image-input'>
-                <input type="file" alt={Language[LANG]['SignUp']['Profile picture']} onChange={(e)=>setAddAccount({...AddAccount,photo:e.target.files[0]})}/>
+                <input type="file" alt={Language[LANG]['SignUp']['Profile picture']} onChange={(e)=>/image\/./.test(e.target.files[0].type) ? setAddAccount({...AddAccount,photo:e.target.files[0]}) : null}/>
             </div>
 
             <div className='name'>

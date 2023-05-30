@@ -40,6 +40,10 @@ export default function Container({children}) {
   },[]);
   if (localStorage.getItem('token')){
     sessionStorage.setItem('token',localStorage.getItem('token'));
+    if (localStorage.getItem('pfp')){
+      sessionStorage.setItem('pfp',localStorage.getItem('pfp'));
+
+    }
   }
   return (
     <motion.div className={`Container`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>

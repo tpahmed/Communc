@@ -11,12 +11,14 @@ import themeJSON from '../../Theme.json';
 
 import './NavBar.css';
 import { useLocation } from 'react-router-dom';
+import { Messages_Context } from '../../Contexts/MessagesContext';
 
 export default function NavBar() {
-    const {LANG,THEME,SideBarActive,SetSideBarActive,Search,SetSearch} = useContext(Main_Context);
+    const {LANG,THEME,Search,SetSearch} = useContext(Main_Context);
+    const {selected,LoadMessages} = useContext(Messages_Context);
     const HTF = CssFilterConverter.hexToFilter;
     const location = useLocation();
-
+    
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
@@ -43,7 +45,24 @@ export default function NavBar() {
             
         }
         SetSearchPH(Language['ENG']['NavBar']['Search in '+location.pathname.split('/')[1]])
+        if (location.pathname == '/messages'){
+            connectWS()
+        }
     },[location.pathname]);
+    function connectWS(){
+        const ws = new WebSocket('ws://localhost:4055/messages');
+            ws.onmessage = (msg)=>{
+                console.log(msg.data)
+                if (JSON.parse(msg.data).type == 'refresh' && JSON.parse(msg.data).data == selected){
+                    LoadMessages();
+                }
+            }
+            ws.onclose = ()=>{
+                setTimeout(()=>{
+                    connectWS();
+                  }, 1000);
+            }
+    }
   return (
     <nav data-tauri-drag-region className="NavBar">
         <div>

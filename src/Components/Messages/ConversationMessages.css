@@ -24,6 +24,11 @@
     -ms-border-radius: .3em;
     -o-border-radius: .3em;
 }
+.ConversationMessages > div > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .ConversationMessages > div > img{
     cursor: pointer;
     margin: .3em;
