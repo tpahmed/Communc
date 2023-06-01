@@ -1,5 +1,6 @@
 import PPlane from '../../assets/Paper-Plane.svg'
 import IImage from '../../assets/Image-Icon.svg'
+import IClose from '../../assets/Close-Icon.svg'
 import Language from '../../Languages.json'
 import themeJSON from '../../Theme.json';
 import { useContext, useRef, useState } from 'react'
@@ -82,6 +83,7 @@ export default function ConversationMessages() {
             {
                 Image ?
                 <div>
+                    <img onClick={()=>{setImage(null);SetImagePreview('')}} src={IClose} alt={Language['ENG']['ConversationMessages']['Cancel Image Upload']} height={'20px'} />
                     <img src={ImagePreview} alt={Language['ENG']['ConversationMessages']['Image Preview']} height={'40px'}/>
                     <span>{Image.name}</span>
                 </div>

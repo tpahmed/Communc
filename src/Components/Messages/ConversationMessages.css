@@ -29,6 +29,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.ConversationMessages > div > div > img:first-of-type{
+    cursor: pointer;
+}
 .ConversationMessages > div > img{
     cursor: pointer;
     margin: .3em;

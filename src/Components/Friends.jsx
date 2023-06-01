@@ -78,7 +78,7 @@ function AddFriend(){
 }
 
 function FriendRequests(){
-  const {requestsList,Update,Search} = useContext(Friends_Context);
+  const {requestsList,Update} = useContext(Friends_Context);
   const HTF = CssFilterConverter.hexToFilter;
   const {LANG,THEME} = useContext(Main_Context);
   
@@ -98,7 +98,7 @@ function FriendRequests(){
     <ul className="Friends-List">
     {
           requestsList.length ? 
-          requestsList.filter((e)=>e.usename.toLowerCase().includes(Search.toLowerCase())).map((e)=>
+          requestsList.map((e)=>
             {
               return (
               <li key={e.id}>
