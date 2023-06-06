@@ -13,6 +13,8 @@ import { Main_Context } from "../Contexts/MainContext";
 import { invoke } from "@tauri-apps/api";
 import { ActionBar_Context } from "../Contexts/ActionBarContext";
 import { Friends_Context } from "../Contexts/FriendsContext";
+import { Messages_Context } from "../Contexts/MessagesContext";
+import { useNavigate } from "react-router-dom";
 
 function AddFriend(){
   const [AddfriendSearch,setAddfriendSearch] = useState('');
@@ -127,9 +129,11 @@ function FriendRequests(){
 
 export default function Friends() {
   const {LANG,THEME} = useContext(Main_Context);
+  const {SetRedirectDM} = useContext(Messages_Context);
   const {friendList,Update,requestsList} = useContext(Friends_Context);
   const {SetActionBar_title,SetActionBar_options,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
   
+  const Navigator = useNavigate();
   const HTF = CssFilterConverter.hexToFilter;
   function delete_Friend(id){
     invoke('delete_Friend',{token:sessionStorage.getItem('token'),id:`${id}`});
@@ -153,6 +157,10 @@ export default function Friends() {
       <FriendRequests/>
     )
     SetActionBar_Active(1);
+  }
+  function Message_Friend(id){
+    Navigator('/messages');
+    SetRedirectDM(id);
   }
   return (
     <Container>
@@ -179,7 +187,7 @@ export default function Friends() {
                       </div>
                     </div>
                     <div>
-                      <img src={IMail} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].text).color}} />
+                      <img src={IMail} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].text).color}} onClick={()=>Message_Friend(e.id)} />
                       <img src={IClose} alt={Language['ENG']["Friends"]['Delete friend'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>delete_Friend(e.id)} />
 
                     </div>

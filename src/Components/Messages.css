@@ -36,6 +36,7 @@
     padding: .3em 1.5em .3em 1.5em;
     font-weight: 600;
     transition: all .3s ease;
+    background-color: var(--green);
     width: 10em;
     margin-left: 1em;
     border: 0;
@@ -55,9 +56,6 @@
     filter: brightness(120%);
     -webkit-filter: brightness(120%);
 }
-.Messages-Titles > div button{
-    background-color: var(--green);
-}
 .Messages-Content{
     position: relative;
     display: flex;
@@ -72,4 +70,174 @@
     margin: .5em;
     margin-top: 2%;
     background-color: var(--text);
+}
+.Messages-CreateGroupe{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.Messages-CreateGroupe > li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.Messages-CreateGroupe > li:not(:first-of-type){
+    flex-direction: column;
+}
+.Messages-CreateGroupe > li:not(:first-of-type) > span{
+    align-self: flex-start;
+    margin: 1em;
+}
+.Messages-CreateGroupe > li:last-of-type{
+    align-items: flex-end;
+}
+.Messages-CreateGroupe input[type="text"]{
+    color: var(--text);
+    background-color: var(--secondary);
+    width: 50%;
+    height: 2em;
+    transition: all .3s ease;
+    margin: 1em;
+    border: 0;
+    padding: .2em .2em .2em .6em;
+    font-size: 1.1em;
+    border-radius: .4em;
+    -webkit-border-radius: .4em;
+    -moz-border-radius: .4em;
+    -ms-border-radius: .4em;
+    -o-border-radius: .4em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Messages-CreateGroupe input[type="text"]:focus{
+    outline: 0;
+}
+.Messages-CreateGroupe img{
+    max-width: 60%;
+    cursor: pointer;
+    max-height: 13em;
+}
+.Messages-CreateGroupe input[type="button"]{
+    cursor: pointer;
+    padding: .3em 1.5em .3em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    width: 10em;
+    margin-left: 1em;
+    border: 0;
+    background-color: var(--green);
+    filter: brightness(100%);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Messages-CreateGroupe input[type="button"]:hover{
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+}
+
+.Messages-CreateGroupe-AddMembers{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.Messages-CreateGroupe-AddMembers > ul{
+    width: 100%;
+    overflow-y: auto;
+    border: 1px 0 1px 0 solid var(--text);
+}
+.Messages-CreateGroupe-AddMembers > ul li{
+    width: 100%;
+    cursor: pointer;
+    padding: .5em;
+    margin: .4em 0 .4em 0;
+    border-radius: .3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.Messages-CreateGroupe-AddMembers > ul li:hover{
+    background-color: var(--secondary);
+}
+
+.Messages-CreateGroupe-AddMembers > ul div{
+    width: 1em;
+    height: 1em;
+    border-radius: 100%;
+    transition: all .1s ease;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+}
+
+.Messages-CreateGroupe-AddMembers > ul img{
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+.Messages-CreateGroupe-AddMembers > ul span{
+    width: 90%;
+    padding-left: .5em;
+}
+
+.Messages-CreateGroupe-AddMembers > div { 
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Messages-CreateGroupe-AddMembers input { 
+    cursor: pointer;
+    padding: .3em 1.5em .3em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    width: 6em;
+    margin-left: 1em;
+    border: 0;
+    background-color: var(--green);
+    filter: brightness(100%);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+
+.Messages-CreateGroupe-AddMembers input:hover{
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
 }

@@ -70,7 +70,17 @@
         },
         "Messages":{
             "Your Messages":"Your Messages",
-            "Create Group":"Create Group"
+            "Create Group":"Create Group",
+            "Create a New Group":"Create a New Group",
+            "Group Name :":"Group Name :",
+            "Group Image :":"Group Image :",
+            "Group Image":"Group Image",
+            "Group Members :":"Group Members :",
+            "Add Members":"Add Members",
+            "Select Friends to Add":"Select Friends to Add",
+            "Create":"Create",
+            "Selected":"Selected",
+            "Done":"Done"
         },
         "ConversationMessages":{
             "Send":"Send",

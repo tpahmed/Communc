@@ -3,7 +3,7 @@ import IImage from '../../assets/Image-Icon.svg'
 import IClose from '../../assets/Close-Icon.svg'
 import Language from '../../Languages.json'
 import themeJSON from '../../Theme.json';
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { Messages_Context } from '../../Contexts/MessagesContext'
 import CssFilterConverter from 'css-filter-converter';
 import { Main_Context } from '../../Contexts/MainContext';
@@ -13,6 +13,7 @@ import axios from 'axios';
 
 export default function ConversationMessages() {
     const {ConversationMessages,selected,LoadMessages} = useContext(Messages_Context);
+    
     const {LANG,THEME} = useContext(Main_Context);
     const imginputRef = useRef(null);
     const [Message,setMessage] = useState('');
@@ -49,6 +50,23 @@ export default function ConversationMessages() {
 
         }
     }
+    function connectWS(){
+        const ws = new WebSocket('ws://localhost:4055/messages');
+            ws.onmessage = (msg)=>{
+                console.log(msg.data)
+                if (JSON.parse(msg.data).type == 'refresh' && JSON.parse(msg.data).data == selected){
+                    LoadMessages();
+                }
+            }
+            ws.onclose = ()=>{
+                setTimeout(()=>{
+                    connectWS();
+                  }, 1000);
+            }
+    }
+    useEffect(()=>{
+        connectWS();
+    },[selected])
   return (
     <div className='ConversationMessages'>
         <ul>
