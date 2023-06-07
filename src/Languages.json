@@ -88,6 +88,17 @@
             "You":"You",
             "Image Preview":"Image Preview",
             "Cancel Image Upload":"Cancel Image Upload"
+        },
+        "Profile":{
+            "Your Profile":"Your Profile",
+            "Logout":"Logout",
+            "Profile Picture":"Profile Picture",
+            "Edit First and Last Name":"Edit First and Last Name",
+            "Change Email":"Change Email",
+            "Change Password":"Change Password",
+            "Report bug":"Report bug",
+            "Change Theme":"Change Theme",
+            "Change Language":"Change Language"
         }
 
     }

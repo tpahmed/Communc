@@ -13,11 +13,17 @@ export default function MessagesContext({children}) {
     
     function Update(){
       invoke('get_conversations',{token:sessionStorage.getItem('token')}).then((e)=>{
+        if(!JSON.parse(e).msg){
+          return setConversations([]);
+        }
         setConversations(JSON.parse(e).msg)
       });
     }
     function LoadMessages(){
       invoke('get_conversation_messages',{token:sessionStorage.getItem('token'),id:`${selected}`}).then((e)=>{
+        if(!JSON.parse(e).msg){
+          return setConversationsMessages([]);
+        }
         setConversationsMessages(JSON.parse(e).msg.reverse())
       });
     }

@@ -1,0 +1,135 @@
+.Profile{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.Profile-TitleBar{
+    position: absolute;
+    width: 100%;
+    height: 3.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--titles-font);
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: .5em;
+    border-bottom: 1px solid var(--text);
+}
+.Profile-TitleBar > span:last-of-type{
+    cursor: pointer;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 6em;
+
+}
+
+.Profile-content{
+    position: absolute;
+    height: calc(100% - 4.5em);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+.Profile-content > img{
+    cursor: pointer;
+    border: 2px solid var(--text);
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+.Profile-content > div{
+    margin: 1em 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Profile-content > div:first-of-type > span{
+    font-size: 1.2em;
+    font-family: var(--titles-font);
+    font-weight: 500;
+}
+.Profile-content > div:first-of-type > img{
+    margin-left: .6em;
+    cursor: pointer;
+}
+.Profile-content > span{
+    color: var(--secondary);
+    font-weight: 800;    
+}
+.Profile-content > div:nth-of-type(2){
+    display: flex;
+    justify-content: space-between;
+    width: 26em;    
+}
+.Profile-content > div:nth-of-type(2) > button{
+    padding: .5em 1.5em .5em 1.5em;
+    text-align: center;
+    border: 0;
+    transition: all .3s ease;
+    cursor: pointer;
+    border: 1px solid;
+    color: var(--background);
+    font-family: var(--titles-font);
+    font-weight: 500;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(1){
+    border-color: var(--green);
+    background-color: var(--green);
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(1):hover{
+    color: var(--green);
+    background-color: var(--background);
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(2){
+    border-color: var(--yellow);
+    background-color: var(--yellow);
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(2):hover{
+    color: var(--yellow);
+    background-color: var(--background);
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(3){
+    border-color: var(--red);
+    background-color: var(--red);
+}
+.Profile-content > div:nth-of-type(2) > button:nth-of-type(3):hover{
+    color: var(--red);
+    background-color: var(--background);
+}
+.Profile-content > div:last-of-type{
+    display: flex;
+    justify-content: space-between;
+    width: 20em;
+}
+.Profile-content > div:last-of-type > button{
+    padding: .5em 1.5em .5em 1.5em;
+    cursor: pointer;
+    font-family: var(--titles-font);
+    font-weight: 500;
+    border: 0;
+    border: 1px solid var(--container-background);
+    color: var(--text);
+    background-color: var(--container-background);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}

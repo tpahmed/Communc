@@ -9,9 +9,15 @@ export default function FriendsContext({children}) {
     
   function Update(){
     invoke('get_friends',{token:sessionStorage.getItem('token')}).then((e)=>{
+      if(!JSON.parse(e).msg){
+        return setfriendList([]);
+      }
       setfriendList(JSON.parse(e).msg);
     });
     invoke('get_friend_requests',{token:sessionStorage.getItem('token')}).then((e)=>{
+      if(!JSON.parse(e).msg){
+        return setrequestsList([]);
+      }
       setrequestsList(JSON.parse(e).msg);
     });
   }

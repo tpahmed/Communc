@@ -15,6 +15,7 @@ import { AnimatePresence } from 'framer-motion';
 import Friends from './Components/Friends';
 import ActionBar from './Components/Global/ActionBar';
 import Messages from './Components/Messages';
+import Profile from './Components/Profile';
 
 function App() {
   // const [name,setName] = useState('');
@@ -42,6 +43,7 @@ function App() {
         <AnimatePresence>
           <Routes>
               <Route index path='/projects' element={<Home/>}/>
+              <Route index path='/profile' element={<Profile/>}/>
               <Route index path='/friends' element={<Friends/>}/>
               <Route index path='/messages' element={<Messages/>}/>
               <Route path='/login' element={<Login/>}/>

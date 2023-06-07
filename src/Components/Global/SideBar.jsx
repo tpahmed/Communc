@@ -58,8 +58,6 @@ export default function SideBar() {
             {Language[LANG]['SideBar']['Projects']}
           </div>
         </div>
-
-
         <div>
           <div onClick={()=>Navigator('/messages')}>
               <img src={MBuble} alt={Language[LANG]['SideBar']['Messages']} style={{ 'filter':SVG_filter }}/>
@@ -77,7 +75,7 @@ export default function SideBar() {
           </div>
         </div>
         <div>
-          <div onClick={()=>Navigator('/login')}>
+          <div onClick={()=>Navigator('/profile')}>
               <img src={sessionStorage.getItem('pfp') ? sessionStorage.getItem('pfp') : DAccount} alt={Language[LANG]['SideBar']['Profile']} />
           </div>
           <div>

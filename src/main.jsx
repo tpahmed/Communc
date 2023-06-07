@@ -6,6 +6,7 @@ import './index.css'
 import ActionBarContext from './Contexts/ActionBarContext'
 import FriendsContext from './Contexts/FriendsContext'
 import MessagesContext from './Contexts/MessagesContext'
+import ProfileContext from './Contexts/ProfileContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ActionBarContext>
         <FriendsContext>
           <MessagesContext>
-            <App />
+            <ProfileContext>
+              <App />
+            </ProfileContext>
           </MessagesContext>
         </FriendsContext>
       </ActionBarContext>
