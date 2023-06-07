@@ -81,6 +81,9 @@
     background-color: var(--secondary);
     width: 70%;
 }
+.SignUp input:focus{
+    outline: 0;
+}
 .SignUp > div{
     display: flex;
     width: 70%;

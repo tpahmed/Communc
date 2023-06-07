@@ -98,7 +98,23 @@
             "Change Password":"Change Password",
             "Report bug":"Report bug",
             "Change Theme":"Change Theme",
-            "Change Language":"Change Language"
+            "Change Language":"Change Language",
+            "Change Name":"Change Name",
+            "First Name:":"First Name:",
+            "Last Name:":"Last Name:",
+            "Done":"Done",
+            "Email:":"Email:",
+            "Old Password:":"Old Password:",
+            "New Password:":"New Password:",
+            "Confirm Password:":"Confirm Password:",
+            "Password and Password Confirmation must be identical":"Password and Password Confirmation must be identical",
+            "Select Language:":"Select Language:"
+        },
+        "BackEndErrors":{
+            "Email already in use":"Email already in use",
+            "Password is Wrong":"Password is Wrong",
+            "Wrong Credentials":"Wrong Credentials",
+            "No account with this email":"No account with this email"
         }
 
     }

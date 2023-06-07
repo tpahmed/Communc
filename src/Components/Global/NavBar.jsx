@@ -11,29 +11,31 @@ import themeJSON from '../../Theme.json';
 
 import './NavBar.css';
 import { useLocation } from 'react-router-dom';
+import { Profile_Context } from '../../Contexts/ProfileContext';
 
 export default function NavBar() {
-    const {LANG,THEME,Search,SetSearch} = useContext(Main_Context);
+    const {Search,SetSearch} = useContext(Main_Context);
+    const { Account } = useContext(Profile_Context);
     const location = useLocation();
     const HTF = CssFilterConverter.hexToFilter;
     
-    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
-        SetSVG_filter(HTF(themeJSON[THEME].text).color);
+        SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
         const TitleBarOPTS = document.querySelectorAll('.NavBar > div:last-of-type > div');
 
         TitleBarOPTS[0].addEventListener('mouseenter',(e)=>{
             e.preventDefault();
-            document.getElementById('NavBar-Minimize').style.filter = HTF(themeJSON[THEME].yellow).color +  ' drop-shadow(1px 1px 2px var(--yellow))'
+            document.getElementById('NavBar-Minimize').style.filter = HTF(themeJSON[Account.theme].yellow).color +  ' drop-shadow(1px 1px 2px var(--yellow))'
         });
         TitleBarOPTS[0].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Minimize').style.filter = SVG_filter});
-        TitleBarOPTS[1].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Maximize').style.filter = HTF(themeJSON[THEME].green).color +  ' drop-shadow(1px 1px 2px var(--green))'});
+        TitleBarOPTS[1].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Maximize').style.filter = HTF(themeJSON[Account.theme].green).color +  ' drop-shadow(1px 1px 2px var(--green))'});
         TitleBarOPTS[1].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Maximize').style.filter = SVG_filter});
-        TitleBarOPTS[2].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = HTF(themeJSON[THEME].red).color +  ' drop-shadow(1px 1px 2px var(--red))'});
+        TitleBarOPTS[2].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = HTF(themeJSON[Account.theme].red).color +  ' drop-shadow(1px 1px 2px var(--red))'});
         TitleBarOPTS[2].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = SVG_filter});
         window.addEventListener('resize',()=>appWindow.isMaximized().then((val)=>document.querySelector('.NavBar').style.borderRadius = val ? '0' : '.4em .4em 0 0'))
-    },[THEME]);
+    },[Account.theme]);
     useEffect(()=>{
         if(['/login','/signup','/forgot','/profile'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');

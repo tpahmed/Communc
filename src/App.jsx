@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
-import { Main_Context } from './Contexts/MainContext'
 import NavBar from './Components/Global/NavBar'
 import { appWindow } from "@tauri-apps/api/window";
 import { invoke } from '@tauri-apps/api'
@@ -16,17 +15,18 @@ import Friends from './Components/Friends';
 import ActionBar from './Components/Global/ActionBar';
 import Messages from './Components/Messages';
 import Profile from './Components/Profile';
+import { Profile_Context } from './Contexts/ProfileContext';
 
 function App() {
   // const [name,setName] = useState('');
   // const [result,setResult] = useState('');
-  const { THEME } = useContext(Main_Context);
+  const { Account } = useContext(Profile_Context);
 
   // async function TEST(){
   //   setResult(await invoke('greet',{name}));
   // }
   const root = document.documentElement;
-  const colors = themeJSON[THEME];
+  const colors = themeJSON[Account.theme];
   for (const color in colors) {
     const value = colors[color];
     root.style.setProperty(`--${color}`, value);

@@ -15,12 +15,14 @@ import { ActionBar_Context } from "../Contexts/ActionBarContext";
 import { Friends_Context } from "../Contexts/FriendsContext";
 import { Messages_Context } from "../Contexts/MessagesContext";
 import { useNavigate } from "react-router-dom";
+import { Profile_Context } from "../Contexts/ProfileContext";
 
 function AddFriend(){
   const [AddfriendSearch,setAddfriendSearch] = useState('');
   const {friendList,Update} = useContext(Friends_Context);
   const HTF = CssFilterConverter.hexToFilter;
   const {LANG,THEME} = useContext(Main_Context);
+  const { Account } = useContext(Profile_Context);
   function sendRequest(id){
     invoke('send_friend_request',{token:sessionStorage.getItem('token'),id:`${id}`});
     Update();
@@ -57,11 +59,11 @@ function AddFriend(){
                 <div>
                   {
                     e.friend_requested ? (
-                        <img src={IClose} alt={Language['ENG']["Friends"]["Cancel friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>cancelRequest(e.id)} />
+                        <img src={IClose} alt={Language['ENG']["Friends"]["Cancel friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>cancelRequest(e.id)} />
                     )
                     :
                     (
-                      <img src={APlus} alt={Language['ENG']["Friends"]["Send friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].green).color}} onClick={()=>sendRequest(e.id)} />
+                      <img src={APlus} alt={Language['ENG']["Friends"]["Send friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>sendRequest(e.id)} />
                     )
                   }
                 </div>
@@ -72,7 +74,7 @@ function AddFriend(){
             }
           )
           :
-          <h3>{Language['ENG']["Friends"]["User Not Found :("]} <img src={CSearch} alt={Language['ENG']["Friends"]["User Not Found :("]} width={'60%'} style={{ filter: HTF(themeJSON[THEME].text).color}} /> </h3>
+          <h3>{Language['ENG']["Friends"]["User Not Found :("]} <img src={CSearch} alt={Language['ENG']["Friends"]["User Not Found :("]} width={'60%'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} /> </h3>
         }
     </ul>
   </>
@@ -83,6 +85,7 @@ function FriendRequests(){
   const {requestsList,Update} = useContext(Friends_Context);
   const HTF = CssFilterConverter.hexToFilter;
   const {LANG,THEME} = useContext(Main_Context);
+  const { Account } = useContext(Profile_Context);
   
   function declineRequest(id){
     invoke('friend_request_action',{token:sessionStorage.getItem('token'),id:`${id}`,action:'decline'});
@@ -112,8 +115,8 @@ function FriendRequests(){
                   </div>
                 </div>
                 <div>
-                  <img src={IClose} alt={Language['ENG']["Friends"]["Decline friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>declineRequest(e.id)} />
-                  <img src={IYes} alt={Language['ENG']["Friends"]["Accept friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].green).color}} onClick={()=>acceptRequest(e.id)} />
+                  <img src={IClose} alt={Language['ENG']["Friends"]["Decline friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>declineRequest(e.id)} />
+                  <img src={IYes} alt={Language['ENG']["Friends"]["Accept friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>acceptRequest(e.id)} />
                 </div>
               </li>
               )
@@ -129,6 +132,8 @@ function FriendRequests(){
 
 export default function Friends() {
   const {LANG,THEME} = useContext(Main_Context);
+  const { Account } = useContext(Profile_Context);
+
   const {SetRedirectDM} = useContext(Messages_Context);
   const {friendList,Update,requestsList} = useContext(Friends_Context);
   const {SetActionBar_title,SetActionBar_options,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
@@ -187,8 +192,8 @@ export default function Friends() {
                       </div>
                     </div>
                     <div>
-                      <img src={IMail} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].text).color}} onClick={()=>Message_Friend(e.id)} />
-                      <img src={IClose} alt={Language['ENG']["Friends"]['Delete friend'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[THEME].red).color}} onClick={()=>delete_Friend(e.id)} />
+                      <img src={IMail} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} onClick={()=>Message_Friend(e.id)} />
+                      <img src={IClose} alt={Language['ENG']["Friends"]['Delete friend'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>delete_Friend(e.id)} />
 
                     </div>
                   </li>

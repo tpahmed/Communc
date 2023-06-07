@@ -11,9 +11,11 @@ import './SideBar.css';
 import { useContext, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ActionBar_Context } from '../../Contexts/ActionBarContext';
+import { Profile_Context } from '../../Contexts/ProfileContext';
 
 export default function SideBar() {
   const {LANG,THEME} = useContext(Main_Context);
+  const {Account} = useContext(Profile_Context);
   const {SetActionBar_Active} = useContext(ActionBar_Context);
   const location = useLocation();
   const HTF = CssFilterConverter.hexToFilter;
@@ -23,8 +25,8 @@ export default function SideBar() {
     const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
     TitleBarOPTS.forEach((el)=>{
       
-      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color});
-      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color});
+      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[Account.theme]["container-background"]).color});
+      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[Account.theme].text).color});
     })
   },[]);
   useEffect(()=>{
@@ -38,14 +40,14 @@ export default function SideBar() {
   },[location.pathname]);
 
   useEffect(()=>{
-    SetSVG_filter(HTF(themeJSON[THEME].text).color);
+    SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
     const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
     TitleBarOPTS.forEach((el)=>{
       
-      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME]["container-background"]).color});
-      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[THEME].text).color});
+      el.addEventListener('mouseenter',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[Account.theme]["container-background"]).color});
+      el.addEventListener('mouseleave',(e)=>{e.preventDefault();el.querySelector('img').style.filter = HTF(themeJSON[Account.theme].text).color});
     })
-  },[THEME]);
+  },[Account.theme]);
   return (
     <div className="SideBarContainer">
       <div className="SideBar">

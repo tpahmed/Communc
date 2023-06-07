@@ -14,7 +14,7 @@ export default function SignUp() {
     const [AddAccount,setAddAccount] = useState({photo:'', first_name:'', last_name:'',email:'',password:'', confirm_password:'', username:''});
     const [flash,setFlash] = useState('')
 
-    const {LANG,SetLANG,SetTHEME} = useContext(Main_Context);
+    const {LANG} = useContext(Main_Context);
     const Navigator = useNavigate();
    
     
@@ -39,12 +39,6 @@ export default function SignUp() {
             if (res.data.success){
                 sessionStorage.setItem('token',res.data.msg.token);
                 localStorage.setItem('token',res.data.msg.token);
-                sessionStorage.setItem('pfp',res.data.msg.pfp);
-                localStorage.setItem('pfp',res.data.msg.pfp);
-                sessionStorage.setItem('params',JSON.stringify({'theme':res.data.msg.theme,'lang':res.data.msg.lang}));
-                localStorage.setItem('params',JSON.stringify({'theme':res.data.msg.theme,'lang':res.data.msg.lang}));
-                SetLANG(res.data.msg.lang);
-                SetTHEME(res.data.msg.theme);
                 setFlash('');
                 Navigator('/')
                 return

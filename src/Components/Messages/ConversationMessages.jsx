@@ -10,17 +10,18 @@ import { Main_Context } from '../../Contexts/MainContext';
 import './ConversationMessages.css'
 import { invoke } from '@tauri-apps/api';
 import axios from 'axios';
+import { Profile_Context } from '../../Contexts/ProfileContext';
 
 export default function ConversationMessages() {
     const {ConversationMessages,selected,LoadMessages} = useContext(Messages_Context);
     
-    const {LANG,THEME} = useContext(Main_Context);
+    const { Account } = useContext(Profile_Context);
     const imginputRef = useRef(null);
     const [Message,setMessage] = useState('');
     const [Image,setImage] = useState(null);
     const [ImagePreview,SetImagePreview] = useState('');
     const HTF = CssFilterConverter.hexToFilter;
-    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
     async function sendMessage(){
         if (Message){
             await invoke('send_message',{token:sessionStorage.getItem('token'),id:`${selected}`,msgType:"text",content:Message});
@@ -75,7 +76,7 @@ export default function ConversationMessages() {
                     return ( 
                         <li key={e.id} className={e.you ? 'ConversationMessages-Message-You' : 'ConversationMessages-Message'}>
                             <div className='ConversationMessages-title'>
-                                <span>{e.lname} {e.fname} {e.you ? `(${Language['ENG']['ConversationMessages']['You']})` : ''}</span>
+                                <span>{e.lname} {e.fname} {e.you ? `(${Language[Account.language]['ConversationMessages']['You']})` : ''}</span>
                                 <span>{e.date}</span>
                             </div>
                             {
@@ -97,18 +98,18 @@ export default function ConversationMessages() {
             type="file"
             onChange={selectFile}
             accept='image/*' />
-            <img onClick={()=>{imginputRef.current.click()}} src={IImage} alt={Language['ENG']['ConversationMessages']['Send Image']} style={{ filter:SVG_filter }}/>
+            <img onClick={()=>{imginputRef.current.click()}} src={IImage} alt={Language[Account.language]['ConversationMessages']['Send Image']} style={{ filter:SVG_filter }}/>
             {
                 Image ?
                 <div>
-                    <img onClick={()=>{setImage(null);SetImagePreview('')}} src={IClose} alt={Language['ENG']['ConversationMessages']['Cancel Image Upload']} height={'20px'} />
-                    <img src={ImagePreview} alt={Language['ENG']['ConversationMessages']['Image Preview']} height={'40px'}/>
+                    <img onClick={()=>{setImage(null);SetImagePreview('')}} src={IClose} alt={Language[Account.language]['ConversationMessages']['Cancel Image Upload']} height={'20px'} />
+                    <img src={ImagePreview} alt={Language[Account.language]['ConversationMessages']['Image Preview']} height={'40px'}/>
                     <span>{Image.name}</span>
                 </div>
                 :
                 <input onKeyDown={(e)=>e.key == 'Enter' ? sendMessage() : null} type="text" value={Message} onChange={(e)=>setMessage(e.target.value)} />
             }
-            <img onClick={sendMessage} src={PPlane} alt={Language['ENG']['ConversationMessages']['Send']} style={{ filter:SVG_filter }} />
+            <img onClick={sendMessage} src={PPlane} alt={Language[Account.language]['ConversationMessages']['Send']} style={{ filter:SVG_filter }} />
         </div>
     </div>
   )

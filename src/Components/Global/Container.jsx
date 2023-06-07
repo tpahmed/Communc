@@ -4,11 +4,13 @@ import { invoke } from "@tauri-apps/api";
 import { useContext, useEffect } from 'react';
 import { Main_Context } from '../../Contexts/MainContext';
 import { motion } from 'framer-motion';
+import { ActionBar_Context } from '../../Contexts/ActionBarContext';
 
 export default function Container({children}) {
   const location = useLocation();
   const Navigator = useNavigate();
   const {SetLANG,SetTHEME} = useContext(Main_Context);
+  const {ActionBar_Active,SetActionBar_Active} = useContext(ActionBar_Context);
   const check_token = ()=>{
     let token = sessionStorage.getItem('token');
     if(!token && !(['/login','/signup','/forgot'].includes(location.pathname) || /\/forgot\/./.test(location.pathname))){
@@ -46,6 +48,6 @@ export default function Container({children}) {
     }
   }
   return (
-    <motion.div className={`Container`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>
+    <motion.div className={`Container ${ActionBar_Active ? "Container-Blur" : ''}`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>
   )
 }

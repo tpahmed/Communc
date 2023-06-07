@@ -12,6 +12,7 @@ import './Messages.css';
 import { Main_Context } from '../Contexts/MainContext';
 import { invoke } from '@tauri-apps/api';
 import axios from 'axios';
+import { Profile_Context } from '../Contexts/ProfileContext';
 
 
 function AddMembers(){
@@ -67,6 +68,8 @@ function CreateGroupe(){
   const {Group,SetGroup,ImgPreview,SetImgPreview,Update} = useContext(Messages_Context);
   const {ActionBar_Active,SetActionBar_content,SetActionBar_Active,SetActionBar_title} = useContext(ActionBar_Context);
   const {THEME} = useContext(Main_Context);
+  const { Account } = useContext(Profile_Context);
+
   const imageInput = useRef(null);
   const HTF = CssFilterConverter.hexToFilter;
   useEffect(()=>{
@@ -76,11 +79,11 @@ function CreateGroupe(){
     }
   },[ActionBar_Active]);
     
-    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].background).color);
+    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].background).color);
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
-        SetSVG_filter(HTF(themeJSON[THEME].text).color);
-    },[THEME]);
+        SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
+    },[Account.theme]);
   
   const handleimage = (e)=>{
     if (e.target.files[0] && /image\/./.test(e.target.files[0].type)){
