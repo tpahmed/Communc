@@ -9,7 +9,6 @@ import { ActionBar_Context } from '../../Contexts/ActionBarContext';
 export default function Container({children}) {
   const location = useLocation();
   const Navigator = useNavigate();
-  const {SetLANG,SetTHEME} = useContext(Main_Context);
   const {ActionBar_Active,SetActionBar_Active} = useContext(ActionBar_Context);
   const check_token = ()=>{
     let token = sessionStorage.getItem('token');
@@ -35,17 +34,10 @@ export default function Container({children}) {
   }
   useEffect(()=>{
     check_token();
-    if(sessionStorage.getItem('params')){
-      SetTHEME(JSON.parse(sessionStorage.getItem('params')).theme);
-      SetLANG(JSON.parse(sessionStorage.getItem('params')).lang);
-    }
   },[]);
   if (localStorage.getItem('token')){
     sessionStorage.setItem('token',localStorage.getItem('token'));
-    if (localStorage.getItem('pfp')){
-      sessionStorage.setItem('pfp',localStorage.getItem('pfp'));
-
-    }
+    
   }
   return (
     <motion.div className={`Container ${ActionBar_Active ? "Container-Blur" : ''}`} transition={{ duration:0.3 }} initial={{ 'top':'100%','opacity':'0%' }} animate={{ 'top':'calc(50% + 1.25em)','opacity':'100%',transition:{opacity:{duration: 0.2,delay: 0.1}} }} exit={{ 'top':'100%','opacity':'0%' }}>{children}</motion.div>

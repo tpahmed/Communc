@@ -19,10 +19,13 @@ export default function NavBar() {
     const location = useLocation();
     const HTF = CssFilterConverter.hexToFilter;
     
-    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
+    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON['Dark'].text).color);
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
-        SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
+        if(Account.theme){
+
+            SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
+        }
         const TitleBarOPTS = document.querySelectorAll('.NavBar > div:last-of-type > div');
 
         TitleBarOPTS[0].addEventListener('mouseenter',(e)=>{

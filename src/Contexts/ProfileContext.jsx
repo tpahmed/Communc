@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export const Profile_Context = createContext();
 
 export default function ProfileContext({children}) {
-    const [Account,SetAccount] = useState({old_pass:'',new_pass:''});
+    const [Account,SetAccount] = useState({old_pass:'',new_pass:'',theme:'Dark',language:'ENG'});
     async function getAccount(){
         const result = await invoke("get_profile",{token:sessionStorage.getItem('token')});
         if(!JSON.parse(result).msg){

@@ -1,7 +1,7 @@
 import CssFilterConverter from "css-filter-converter";
 import Language from "../Languages.json";
 import themeJSON from "../Theme.json";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Main_Context } from "../Contexts/MainContext";
 import ILogout from "../assets/Logout-Icon.svg";
 import IPen from "../assets/Pen-Icon.svg";
@@ -10,6 +10,52 @@ import "./Profile.css";
 import { Profile_Context } from "../Contexts/ProfileContext";
 import { ActionBar_Context } from "../Contexts/ActionBarContext";
 import { useNavigate } from "react-router-dom";
+import { invoke } from "@tauri-apps/api";
+import axios from "axios";
+
+function ChangeImage(){
+    const {Account,getAccount} = useContext(Profile_Context);
+    const {SetActionBar_Active} = useContext(ActionBar_Context);
+    const UploadInput = useRef();
+    const [Image,setImage] = useState(null);
+    const [ImagePrev,setImagePrev] = useState('');
+    function handleImage(e){
+        if(e.target.files[0] && /image\/./.test(e.target.files[0].type)){
+            setImage(e.target.files[0]);
+            const Obj_URL = URL.createObjectURL(e.target.files[0]);
+            setImagePrev(Obj_URL);
+        }
+    }
+
+    const Done = async ()=>{
+        if(Image){
+            const formData = new FormData();
+            formData.append('token',sessionStorage.getItem('token'));
+            formData.append('old_image',Account.image);
+            formData.append('image',Image);
+            await axios.post('//localhost:4055/profile/edit/image',formData,{
+                headers:'multipart/form-data'
+            })
+            setImage(null);
+            setImagePrev('');
+            await getAccount();
+        }
+        SetActionBar_Active(0);
+    }
+    return (
+        <div className="Profile-Change">
+            <input type="file" style={{ display:"none" }} ref={UploadInput} onChange={handleImage}/>
+            <img src={ImagePrev ? ImagePrev : Account.image} alt={Language["ENG"]["Profile"]["Profile Picture"]}/>
+            
+            <button onClick={()=>UploadInput.current.click()}>
+                {Language["ENG"]["Profile"]["Upload"]}
+            </button>
+            <button onClick={Done}>
+                {Language["ENG"]["Profile"]["Done"]}
+            </button>
+        </div>
+    )
+}
 
 function ChangeName(){
     const {Account,SetAccount,CommitChanges} = useContext(Profile_Context);
@@ -109,7 +155,7 @@ function ChangeTheme(){
     }
     return (
         <div className="Profile-Change">
-            <span>{Language["ENG"]["Profile"]["Select Language:"]}</span>
+            <span>{Language["ENG"]["Profile"]["Select Theme:"]}</span>
             <ul>
                 {
                     Object.keys(themeJSON).map((e)=>{
@@ -125,9 +171,53 @@ function ChangeTheme(){
         </div>
     )
 }
+function ChangeLanguage(){
+    const {Account,SetAccount,CommitChanges} = useContext(Profile_Context);
+    const {SetActionBar_Active} = useContext(ActionBar_Context);
+    
+    const Done = async ()=>{
+        await CommitChanges();
+        SetActionBar_Active(0);
+    }
+    return (
+        <div className="Profile-Change">
+            <span>{Language["ENG"]["Profile"]["Select Language:"]}</span>
+            <ul>
+                {
+                    Object.keys(Language).map((e)=>{
+                        console.log(e)
+                        return (
+                            <li key={e} onClick={()=>SetAccount({...Account,language:e})} style={e == Account.language ? { borderColor:'var(--green)' } : null}>{e}</li>
+                        )
+                    })
+                }
+            </ul>
+            <button onClick={Done}>
+                {Language["ENG"]["Profile"]["Done"]}
+            </button>
+        </div>
+    )
+}
+
+function Reportbug(){
+    const {SetActionBar_Active} = useContext(ActionBar_Context);
+    const [Message,SetMessage] = useState('');
+    const Done = async ()=>{
+        const result = await invoke('bug_report',{token:sessionStorage.getItem('token'),message:Message});
+        SetActionBar_Active(0);
+    }
+    return (
+        <div className="Profile-Change">
+            <span>{Language["ENG"]["Profile"]["Bug Description:"]}</span>
+            <textarea cols="30" rows="10" value={Message} onChange={(e)=>SetMessage(e.target.value)}></textarea>
+            <button onClick={Done}>
+                {Language["ENG"]["Profile"]["Send"]}
+            </button>
+        </div>
+    )
+}
 
 export default function Profile() {
-    const {THEME} = useContext(Main_Context);
     const {SetActionBar_title,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
     const {Account,getAccount} = useContext(Profile_Context);
     const HTF = CssFilterConverter.hexToFilter;
@@ -144,6 +234,11 @@ export default function Profile() {
         sessionStorage.clear();
         localStorage.clear();
         Navigator('/login');
+    }
+    function Change_Image(){
+        SetActionBar_title(Language["ENG"]["Profile"]["Profile Picture Preview"]);
+        SetActionBar_content(<ChangeImage/>)
+        SetActionBar_Active(1);
     }
     function Change_Name(){
         SetActionBar_title(Language["ENG"]["Profile"]["Change Name"]);
@@ -165,6 +260,16 @@ export default function Profile() {
         SetActionBar_content(<ChangeTheme/>)
         SetActionBar_Active(1);
     }
+    function Change_Language(){
+        SetActionBar_title(Language["ENG"]["Profile"]["Change Language"]);
+        SetActionBar_content(<ChangeLanguage/>)
+        SetActionBar_Active(1);
+    }
+    function Report_Bug(){
+        SetActionBar_title(Language["ENG"]["Profile"]["Report bug"]);
+        SetActionBar_content(<Reportbug/>)
+        SetActionBar_Active(1);
+    }
     return (
         <Container>
             <div className='Profile'>
@@ -173,7 +278,7 @@ export default function Profile() {
                     <span onClick={Logout}>{Language["ENG"]["Profile"]["Logout"]} <img src={ILogout} alt={Language["ENG"]["Profile"]["Logout"]} style={{ filter:SVG_filter }} width={"40px"} height={"40px"} /></span>
                 </div>
                 <div className="Profile-content">
-                    <img src={Account.image} alt={Language["ENG"]["Profile"]["Profile Picture"]} width={'160px'} />
+                    <img src={Account.image} alt={Language["ENG"]["Profile"]["Profile Picture"]} width={'160px'} height={'160px'} onClick={Change_Image} />
                     <div>
                         <span>{Account.fname} {Account.lname}</span>
                         <img onClick={Change_Name} src={IPen} alt={Language["ENG"]["Profile"]["Edit First and Last Name"]} width={'20px'} style={{ filter:HTF(themeJSON[Account.theme].text).color }} />
@@ -186,7 +291,7 @@ export default function Profile() {
                         <button onClick={Change_Password}>
                             {Language["ENG"]["Profile"]["Change Password"]}
                         </button>
-                        <button>
+                        <button onClick={Report_Bug}>
                             {Language["ENG"]["Profile"]["Report bug"]}
                         </button>
                     </div>
@@ -194,7 +299,7 @@ export default function Profile() {
                         <button onClick={Change_Theme}>
                             {Language["ENG"]["Profile"]["Change Theme"]}
                         </button>
-                        <button>
+                        <button onClick={Change_Language}>
                             {Language["ENG"]["Profile"]["Change Language"]}
                         </button>
                     </div>

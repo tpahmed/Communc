@@ -19,7 +19,7 @@ export default function SideBar() {
   const {SetActionBar_Active} = useContext(ActionBar_Context);
   const location = useLocation();
   const HTF = CssFilterConverter.hexToFilter;
-  const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[THEME].text).color);
+  const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
   const Navigator = useNavigate();
   useEffect(()=>{
     const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
@@ -40,7 +40,9 @@ export default function SideBar() {
   },[location.pathname]);
 
   useEffect(()=>{
-    SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
+    if(Account.theme){
+      SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
+    }
     const TitleBarOPTS = document.querySelectorAll('.SideBar > div:not(:last-of-type)');
     TitleBarOPTS.forEach((el)=>{
       
@@ -78,7 +80,7 @@ export default function SideBar() {
         </div>
         <div>
           <div onClick={()=>Navigator('/profile')}>
-              <img src={sessionStorage.getItem('pfp') ? sessionStorage.getItem('pfp') : DAccount} alt={Language[LANG]['SideBar']['Profile']} />
+              <img src={Account.image ? Account.image : DAccount} alt={Language[LANG]['SideBar']['Profile']} />
           </div>
           <div>
             {Language[LANG]['SideBar']['Profile']}

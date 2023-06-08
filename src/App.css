@@ -31,10 +31,6 @@
     height: 100vh;
     width: 100%;
     border-radius: .4em;
-    -webkit-border-radius: .4em;
-    -moz-border-radius: .4em;
-    -ms-border-radius: .4em;
-    -o-border-radius: .4em;
 }
 *{
     padding: 0;

@@ -108,6 +108,13 @@ async fn edit_profile(token: &str,account: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+#[tauri::command]
+async fn bug_report(token: &str,message: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/report").form(&[("token",token),("message",message)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -117,7 +124,7 @@ fn main() {
             send_friend_request,friend_request_action,
             get_friend_requests,get_conversations,
             get_conversation_messages,send_message,
-            get_profile,edit_profile
+            get_profile,edit_profile,bug_report
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -147,7 +147,7 @@
     justify-content: space-between;
     margin: .7em 0 .7em 0;
 }
-.Profile-Change input{
+.Profile-Change input, .Profile-Change textarea{
     background-color: var(--secondary);
     color: var(--text);
     border: 0;
@@ -160,8 +160,14 @@
     -ms-border-radius: .3em;
     -o-border-radius: .3em;
 }
-.Profile-Change input:focus{
+.Profile-Change input:focus, .Profile-Change textarea:focus{
     outline: 0;
+}
+.Profile-Change textarea{
+    height: 70%;
+    max-height: 90%;
+    width: 100%;
+    max-width: 100%;
 }
 
 .Profile-Change ul{
@@ -173,6 +179,7 @@
     list-style: none;
 }
 .Profile-Change li{
+    padding: .5em .5em .5em 1.5em;
     margin: .5em;
     border: 1px solid;
     border-radius: .3em;
@@ -182,8 +189,34 @@
     -ms-border-radius: .3em;
     -o-border-radius: .3em;
 }
+.Profile-Change img{
+    max-width: 100%;
+    max-height: 70%;
+}
 
-.Profile-Change > button{
+.Profile-Change > button:first-of-type{
+    position: absolute;
+    left: 40%;
+    bottom: 0;
+    cursor: pointer;
+    padding: .3em 1.5em .3em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    background-color: var(--yellow);
+    border: 0;
+    filter: brightness(100%);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Profile-Change > button:last-of-type{
     position: absolute;
     bottom: 0;
     right: 0;

@@ -93,6 +93,7 @@
             "Your Profile":"Your Profile",
             "Logout":"Logout",
             "Profile Picture":"Profile Picture",
+            "Profile Picture Preview":"Profile Picture Preview",
             "Edit First and Last Name":"Edit First and Last Name",
             "Change Email":"Change Email",
             "Change Password":"Change Password",
@@ -102,13 +103,17 @@
             "Change Name":"Change Name",
             "First Name:":"First Name:",
             "Last Name:":"Last Name:",
+            "Upload":"Upload",
             "Done":"Done",
             "Email:":"Email:",
             "Old Password:":"Old Password:",
             "New Password:":"New Password:",
             "Confirm Password:":"Confirm Password:",
             "Password and Password Confirmation must be identical":"Password and Password Confirmation must be identical",
-            "Select Language:":"Select Language:"
+            "Select Language:":"Select Language:",
+            "Select Theme:":"Select Theme:",
+            "Bug Description:":"Bug Description:",
+            "Send":"Send"
         },
         "BackEndErrors":{
             "Email already in use":"Email already in use",
