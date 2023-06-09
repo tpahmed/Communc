@@ -7,6 +7,7 @@ import { Messages_Context } from '../Contexts/MessagesContext';
 import ConversationMessages from './Messages/ConversationMessages';
 import { ActionBar_Context } from '../Contexts/ActionBarContext';
 import IImage from '../assets/Image-Icon.svg';
+import MInfo from '../assets/More-Info.svg';
 import CssFilterConverter from 'css-filter-converter';
 import './Messages.css';
 import { Main_Context } from '../Contexts/MainContext';
@@ -130,8 +131,9 @@ function CreateGroupe(){
 }
 
 export default function Messages() {
-  const {selected,Setselected} = useContext(Messages_Context);
+  const {selected,Setselected,GroupInfo} = useContext(Messages_Context);
   const {SetActionBar_title,SetActionBar_options,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
+  
   function CreateGroupeAction(){
     SetActionBar_title(Language['ENG']["Messages"]['Create a New Group']);
     SetActionBar_options(null);
@@ -143,6 +145,20 @@ export default function Messages() {
         <div className="Messages">
           <div className="Messages-Titles">
             <h2>{Language['ENG']["Messages"]['Your Messages']}</h2>
+            {
+              GroupInfo.type == "group" ? (
+                <div className='Messages-Conversation-Info' style={{ cursor:'pointer' }}>
+                  <img src={GroupInfo.image} alt={Language['ENG']["Messages"]['Groupe Image']} style={{ borderRadius:"100%" }} width={"60px"} height={"60px"}/>
+                  <span>{GroupInfo.name}</span>
+                  <img src={MInfo} alt={Language['ENG']["Messages"]['More Info']} width={'25px'}/>
+                </div>
+              ):(
+                <div className='Messages-Conversation-Info'>
+                  <img src={GroupInfo.image} alt={Language['ENG']["Messages"]['Groupe Image']} style={{ borderRadius:"100%" }} width={"60px"} height={"60px"}/>
+                  <span>{GroupInfo.name}</span>
+                </div>
+              )
+            }
             <div>
                 
             </div>

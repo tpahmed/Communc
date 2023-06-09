@@ -241,3 +241,13 @@
     filter: brightness(120%);
     -webkit-filter: brightness(120%);
 }
+
+.Messages-Conversation-Info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10em;
+    font-size: 1.3em;
+    font-family: var(--titles-font);
+    font-weight: 500;
+}
