@@ -22,6 +22,7 @@
     align-items: center;
     border-bottom: 1px solid var(--text);
     padding: 1em 2em 2em 0;
+    max-height: 5em;
 }
 .Messages-Titles > h2{
     font-family: var(--titles-font);
@@ -246,8 +247,70 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 10em;
+    width: 8em;
     font-size: 1.3em;
     font-family: var(--titles-font);
     font-weight: 500;
+}
+
+.Messages-GroupeInfo > div:first-of-type{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--titles-font);
+    font-size: 1.3em;
+    width: 100%;
+}
+.Messages-GroupeInfo > div{
+    font-size: 1em;
+    margin: 1em 0 0 1em;
+    align-self: flex-start;
+}
+.Messages-GroupeInfo > ul{
+    max-height: 10em;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    margin-left: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.Messages-GroupeInfo > ul > li{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 90%;
+    margin: .5em 0 .5em 0;
+}
+.Messages-GroupeInfo > ul > li > img{
+    margin-right: .5em;
+    cursor: pointer;
+}
+.Messages-GroupeInfo input[type="button"]{
+    cursor: pointer;
+    padding: .3em 1.5em .3em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    width: 10em;
+    margin-left: 1em;
+    border: 0;
+    background-color: var(--green);
+    filter: brightness(100%);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Messages-GroupeInfo input[type="button"]:hover{
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
 }

@@ -37,7 +37,7 @@ function AddFriend(){
   return (
   <>
     <div>
-      <span>{Language['ENG']["Friends"]['Username']} :</span>
+      <span>{Language[Account.language]["Friends"]['Username']} :</span>
       <input className="Friends-Search" type="text" value={AddfriendSearch} onChange={(e)=>setAddfriendSearch(e.target.value)}/>
     </div>
     <ul className="Friends-List">
@@ -59,11 +59,11 @@ function AddFriend(){
                 <div>
                   {
                     e.friend_requested ? (
-                        <img src={IClose} alt={Language['ENG']["Friends"]["Cancel friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>cancelRequest(e.id)} />
+                        <img src={IClose} alt={Language[Account.language]["Friends"]["Cancel friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>cancelRequest(e.id)} />
                     )
                     :
                     (
-                      <img src={APlus} alt={Language['ENG']["Friends"]["Send friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>sendRequest(e.id)} />
+                      <img src={APlus} alt={Language[Account.language]["Friends"]["Send friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>sendRequest(e.id)} />
                     )
                   }
                 </div>
@@ -74,7 +74,7 @@ function AddFriend(){
             }
           )
           :
-          <h3>{Language['ENG']["Friends"]["User Not Found :("]} <img src={CSearch} alt={Language['ENG']["Friends"]["User Not Found :("]} width={'60%'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} /> </h3>
+          <h3>{Language[Account.language]["Friends"]["User Not Found :("]} <img src={CSearch} alt={Language[Account.language]["Friends"]["User Not Found :("]} width={'60%'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} /> </h3>
         }
     </ul>
   </>
@@ -115,15 +115,15 @@ function FriendRequests(){
                   </div>
                 </div>
                 <div>
-                  <img src={IClose} alt={Language['ENG']["Friends"]["Decline friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>declineRequest(e.id)} />
-                  <img src={IYes} alt={Language['ENG']["Friends"]["Accept friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>acceptRequest(e.id)} />
+                  <img src={IClose} alt={Language[Account.language]["Friends"]["Decline friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>declineRequest(e.id)} />
+                  <img src={IYes} alt={Language[Account.language]["Friends"]["Accept friend request"]} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].green).color}} onClick={()=>acceptRequest(e.id)} />
                 </div>
               </li>
               )
             }
           )
           :
-          <h3>{Language['ENG']["Friends"]["No Friend Request Recieved"]}</h3>
+          <h3>{Language[Account.language]["Friends"]["No Friend Request Recieved"]}</h3>
         }
     </ul>
   </>
@@ -148,7 +148,7 @@ export default function Friends() {
     Update();
   },[]);
   function Add_Friends(){
-    SetActionBar_title(Language['ENG']["Friends"]['Add a new Friend']);
+    SetActionBar_title(Language[Account.language]["Friends"]['Add a new Friend']);
     SetActionBar_options(<></>);
     SetActionBar_content(
       <AddFriend/>
@@ -156,7 +156,7 @@ export default function Friends() {
     SetActionBar_Active(1);
   }
   function Friend_requests(){
-    SetActionBar_title(Language['ENG']["Friends"]['Incoming Requests']);
+    SetActionBar_title(Language[Account.language]["Friends"]['Incoming Requests']);
     SetActionBar_options(<></>);
     SetActionBar_content(
       <FriendRequests/>
@@ -171,10 +171,10 @@ export default function Friends() {
     <Container>
         <div className="Friends">
           <div className="Friends-Titles">
-            <h2>{Language['ENG']["Friends"]['Your Friends']}</h2>
+            <h2>{Language[Account.language]["Friends"]['Your Friends']}</h2>
             <div>
-              <button onClick={Friend_requests}>{Language['ENG']["Friends"]['Requests']} {requestsList.length ? <div className="Friends-Notification"><span>{requestsList.length}</span></div> : <></>}</button>
-              <button onClick={Add_Friends}>{Language['ENG']["Friends"]['Add Friends']}</button>
+              <button onClick={Friend_requests}>{Language[Account.language]["Friends"]['Requests']} {requestsList.length ? <div className="Friends-Notification"><span>{requestsList.length}</span></div> : <></>}</button>
+              <button onClick={Add_Friends}>{Language[Account.language]["Friends"]['Add Friends']}</button>
             </div>
           </div>
           <ul className="Friends-List">
@@ -192,8 +192,8 @@ export default function Friends() {
                       </div>
                     </div>
                     <div>
-                      <img src={IMail} alt={Language['ENG']["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} onClick={()=>Message_Friend(e.id)} />
-                      <img src={IClose} alt={Language['ENG']["Friends"]['Delete friend'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>delete_Friend(e.id)} />
+                      <img src={IMail} alt={Language[Account.language]["Friends"]['Message'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].text).color}} onClick={()=>Message_Friend(e.id)} />
+                      <img src={IClose} alt={Language[Account.language]["Friends"]['Delete friend'] + ' ' + e.username} width={'30px'} height={'30px'} style={{ filter: HTF(themeJSON[Account.theme].red).color}} onClick={()=>delete_Friend(e.id)} />
 
                     </div>
                   </li>

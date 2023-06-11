@@ -31,7 +31,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.ActionBar-Title > h3 > img{
+.ActionBar-Title > h3 > img,.ActionBar-Title img {
     margin-right: .3em;
     cursor: pointer;
 }

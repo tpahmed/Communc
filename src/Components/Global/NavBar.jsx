@@ -4,7 +4,7 @@ import {ReactComponent as HMenu} from '../../assets/Haburger-Menu.svg';
 import IClose from '../../assets/Close-Icon.svg';
 import IMaximize from '../../assets/Maximize-Icon.svg';
 import IMinimize from '../../assets/Minimize-Icon.svg';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { appWindow } from "@tauri-apps/api/window";
 import Language from '../../Languages.json';
 import themeJSON from '../../Theme.json';
@@ -15,7 +15,10 @@ import { Profile_Context } from '../../Contexts/ProfileContext';
 
 export default function NavBar() {
     const {Search,SetSearch} = useContext(Main_Context);
-    const { Account } = useContext(Profile_Context);
+    const { Account,getAccount } = useContext(Profile_Context);
+    const NavBarRef = useRef(null);
+    const NavBarButtonsRef = useRef([]);
+    const TitleBarOPTS = useRef([]);
     const location = useLocation();
     const HTF = CssFilterConverter.hexToFilter;
     
@@ -23,35 +26,38 @@ export default function NavBar() {
     const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
         if(Account.theme){
-
             SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
         }
-        const TitleBarOPTS = document.querySelectorAll('.NavBar > div:last-of-type > div');
 
-        TitleBarOPTS[0].addEventListener('mouseenter',(e)=>{
-            e.preventDefault();
-            document.getElementById('NavBar-Minimize').style.filter = HTF(themeJSON[Account.theme].yellow).color +  ' drop-shadow(1px 1px 2px var(--yellow))'
-        });
-        TitleBarOPTS[0].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Minimize').style.filter = SVG_filter});
-        TitleBarOPTS[1].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Maximize').style.filter = HTF(themeJSON[Account.theme].green).color +  ' drop-shadow(1px 1px 2px var(--green))'});
-        TitleBarOPTS[1].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Maximize').style.filter = SVG_filter});
-        TitleBarOPTS[2].addEventListener('mouseenter',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = HTF(themeJSON[Account.theme].red).color +  ' drop-shadow(1px 1px 2px var(--red))'});
-        TitleBarOPTS[2].addEventListener('mouseleave',(e)=>{e.preventDefault();document.getElementById('NavBar-Close').style.filter = SVG_filter});
-        window.addEventListener('resize',()=>appWindow.isMaximized().then((val)=>document.querySelector('.NavBar').style.borderRadius = val ? '0' : '.4em .4em 0 0'))
+        TitleBarOPTS.current[0].onmouseenter = (e)=>{
+            NavBarButtonsRef.current[0].style.filter = HTF(themeJSON[Account.theme].yellow).color +  ' drop-shadow(1px 1px 2px var(--yellow))'
+        };
+        TitleBarOPTS.current[0].onmouseleave = (e)=>{
+            NavBarButtonsRef.current[0].style.filter = HTF(themeJSON[Account.theme].text).color
+        };
+        TitleBarOPTS.current[1].onmouseenter = (e)=>{
+            NavBarButtonsRef.current[1].style.filter = HTF(themeJSON[Account.theme].green).color +  ' drop-shadow(1px 1px 2px var(--green))'
+        };
+    
+        TitleBarOPTS.current[1].onmouseleave = (e)=>{NavBarButtonsRef.current[1].style.filter = HTF(themeJSON[Account.theme].text).color};
+        TitleBarOPTS.current[2].onmouseenter = (e)=>{NavBarButtonsRef.current[2].style.filter = HTF(themeJSON[Account.theme].red).color +  ' drop-shadow(1px 1px 2px var(--red))'};
+        TitleBarOPTS.current[2].onmouseleave = (e)=>{NavBarButtonsRef.current[2].style.filter = HTF(themeJSON[Account.theme].text).color};
+        window.addEventListener('resize',()=>appWindow.isMaximized().then((val)=>NavBarRef.current.style.borderRadius = val ? '0' : '.4em .4em 0 0'))
     },[Account.theme]);
     useEffect(()=>{
         if(['/login','/signup','/forgot','/profile'].includes(location.pathname) || /\/forgot\/./.test(location.pathname)){
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = '-25%');
         }
         else{
+            getAccount();
             document.querySelectorAll('.NavBar > div:not(:last-of-type)').forEach((e)=>e.style.marginTop = null);
             
         }
-        SetSearchPH(Language['ENG']['NavBar']['Search in '+location.pathname.split('/')[1]])
+        SetSearchPH(Language[Account.language]['NavBar']['Search in '+location.pathname.split('/')[1]])
     },[location.pathname]);
    
   return (
-    <nav data-tauri-drag-region className="NavBar">
+    <nav data-tauri-drag-region className="NavBar" ref={NavBarRef}>
         <div>
         </div>
         <div>
@@ -61,14 +67,14 @@ export default function NavBar() {
         </div>
         
         <div>
-            <div onClick={()=>appWindow.minimize()}>
-                <img id='NavBar-Minimize' src={IMinimize} alt={Language['ENG'].NavBar['Minimize']} onClick={()=>appWindow.minimize()} style={{ 'filter':SVG_filter }} width={'20px'}/>
+            <div onClick={()=>appWindow.minimize()} ref={(e)=>TitleBarOPTS.current[0] = e}>
+                <img id='NavBar-Minimize' src={IMinimize} ref={(e)=>NavBarButtonsRef.current[0] = e} alt={Language[Account.language].NavBar['Minimize']} onClick={()=>appWindow.minimize()} style={{ 'filter':SVG_filter }} width={'20px'}/>
             </div>
-            <div onClick={()=>appWindow.toggleMaximize()}>
-                <img id='NavBar-Maximize' src={IMaximize} alt={Language['ENG'].NavBar['Maximize']} style={{ 'filter':SVG_filter }} width={'20px'}/>
+            <div onClick={()=>appWindow.toggleMaximize()} ref={(e)=>TitleBarOPTS.current[1] = e}>
+                <img id='NavBar-Maximize' src={IMaximize} ref={(e)=>NavBarButtonsRef.current[1] = e} alt={Language[Account.language].NavBar['Maximize']} style={{ 'filter':SVG_filter }} width={'20px'}/>
             </div>
-            <div onClick={()=>appWindow.close()}>
-                <img id='NavBar-Close' src={IClose} alt={Language['ENG'].NavBar['Close']} style={{ 'filter':SVG_filter }} width={'20px'}/>
+            <div onClick={()=>appWindow.close()} ref={(e)=>TitleBarOPTS.current[2] = e}>
+                <img id='NavBar-Close' src={IClose} ref={(e)=>NavBarButtonsRef.current[2] = e} alt={Language[Account.language].NavBar['Close']} style={{ 'filter':SVG_filter }} width={'20px'}/>
             </div>
         </div>
     </nav>

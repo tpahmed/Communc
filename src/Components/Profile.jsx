@@ -218,7 +218,7 @@ function Reportbug(){
 }
 
 export default function Profile() {
-    const {SetActionBar_title,SetActionBar_content,SetActionBar_Active} = useContext(ActionBar_Context);
+    const {SetActionBar_title,SetActionBar_content,SetActionBar_Active,ActionBar_Active} = useContext(ActionBar_Context);
     const {Account,getAccount} = useContext(Profile_Context);
     const HTF = CssFilterConverter.hexToFilter;
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].red).color);
@@ -228,7 +228,7 @@ export default function Profile() {
     },[Account.theme]);
     useEffect(()=>{
         getAccount();
-    },[]);
+    },[ActionBar_Active]);
     
     function Logout(){
         sessionStorage.clear();

@@ -94,6 +94,43 @@ async fn get_conversation_messages(token: &str,id: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+
+#[tauri::command]
+async fn add_conversation_participent(token: &str,id: &str,members: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/conversation/add").form(&[("token",token),("id",id),("members",members)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+#[tauri::command]
+async fn delete_conversation_participent(token: &str,id: &str,memberid: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/conversation/delete").form(&[("token",token),("id",id),("member_id",memberid)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+#[tauri::command]
+async fn quit_conversation(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/group/quit").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+#[tauri::command]
+async fn delete_group(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/group/delete").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+
+#[tauri::command]
+async fn get_friends_add(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/conversation/friends").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 #[tauri::command]
 async fn send_message(token: &str,id: &str,msg_type: &str,content: &str) -> Result<String,()> {
     let client = reqwest::Client::new();
@@ -132,7 +169,9 @@ fn main() {
             get_friend_requests,get_conversations,
             get_conversation_messages,get_conversations_info,
             send_message,get_profile,
-            edit_profile,bug_report
+            edit_profile,bug_report,get_friends_add,
+            add_conversation_participent,delete_conversation_participent,
+            delete_group,quit_conversation
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
