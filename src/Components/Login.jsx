@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import Container from "./Global/Container"
 import Language from '../Languages.json'
-
+import themeJSON from '../Theme.json';
+import Logo from '../assets/logo.svg'
 import './Login.css';
 import { Main_Context } from "../Contexts/MainContext";
 import { useNavigate } from "react-router-dom";
 import { invoke } from "@tauri-apps/api";
 import { Profile_Context } from "../Contexts/ProfileContext";
+import CssFilterConverter from "css-filter-converter";
 
 
 export default function Login() {
@@ -15,6 +17,7 @@ export default function Login() {
     const [Remember,setRemember] = useState(false);
     const [flash,setFlash] = useState('');
     const Navigator = useNavigate();
+    const HTF = CssFilterConverter.hexToFilter;
     const loginAction = async ()=>{
       const result = await invoke('login',LoginAccount);
       const result_json = JSON.parse(result);
@@ -35,6 +38,7 @@ export default function Login() {
   return (
     <Container>
         <div className="Login">
+            <img src={Logo} alt={Language[Account.language]['Login']["Logo"]} height={'10%'} style={{ 'filter':HTF(themeJSON[Account.theme].text).color }} />
             <b className="Login-flash">{flash}</b>
             <input onKeyDown={(e)=>e.key == 'Enter' ? loginAction() : null} type="text" placeholder={Language[Account.language]['Login']["Email"]} value={LoginAccount.email} onChange={(e)=>setLoginAccount({...LoginAccount,email:e.target.value})}/>
             <input onKeyDown={(e)=>e.key == 'Enter' ? loginAction() : null} type="password" placeholder={Language[Account.language]['Login']["Password"]} value={LoginAccount.password} onChange={(e)=>setLoginAccount({...LoginAccount,password:e.target.value})}/>

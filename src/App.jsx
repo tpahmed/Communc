@@ -9,13 +9,13 @@ import SideBar from './Components/Global/SideBar'
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import ForgotPass from './Components/ForgotPass';
-import Home from './Components/Home';
 import { AnimatePresence } from 'framer-motion';
 import Friends from './Components/Friends';
 import ActionBar from './Components/Global/ActionBar';
 import Messages from './Components/Messages';
 import Profile from './Components/Profile';
 import { Profile_Context } from './Contexts/ProfileContext';
+import Communities from './Components/communities';
 
 function App() {
   // const [name,setName] = useState('');
@@ -42,7 +42,7 @@ function App() {
         <ActionBar title={"test"} content={<div>test</div>}/>
         <AnimatePresence>
           <Routes>
-              <Route index path='/projects' element={<Home/>}/>
+              <Route index path='/communities' element={<Communities/>}/>
               <Route index path='/profile' element={<Profile/>}/>
               <Route index path='/friends' element={<Friends/>}/>
               <Route index path='/messages' element={<Messages/>}/>
@@ -50,7 +50,7 @@ function App() {
               <Route path='/signup' element={<SignUp/>}/>
               <Route path='/forgot' element={<ForgotPass/>}/>
               <Route path='/forgot/:param_email' element={<ForgotPass/>}/>
-              <Route path='*' element={<Navigate to={'/projects'}/>}/>
+              <Route path='*' element={<Navigate to={'/communities'}/>}/>
           </Routes>
         </AnimatePresence>
       </BrowserRouter>

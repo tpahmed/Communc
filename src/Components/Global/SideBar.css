@@ -4,6 +4,7 @@
     position: fixed;
     left: -2.5em;
     height: 60%;
+    max-height: 20em;
     width: 5em;
     top: calc(50% - 3.5em);
     transform: translateY(calc(-50% + 3.5em));

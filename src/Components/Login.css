@@ -38,6 +38,9 @@
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
+.Login img{
+    margin-top: 5em !important;
+}
 .Login button{
     width: 6em;
     font-weight: 500;

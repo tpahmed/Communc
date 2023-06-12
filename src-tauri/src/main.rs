@@ -123,6 +123,20 @@ async fn delete_group(token: &str,id: &str) -> Result<String,()> {
     Ok(res.unwrap().text().await.unwrap())
 }
 
+#[tauri::command]
+async fn get_communities(token: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/communities/get").form(&[("token",token)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
+#[tauri::command]
+async fn add_favorite(token: &str,id: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/favorite/add").form(&[("token",token),("id",id)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
+
 
 #[tauri::command]
 async fn get_friends_add(token: &str,id: &str) -> Result<String,()> {
@@ -171,7 +185,8 @@ fn main() {
             send_message,get_profile,
             edit_profile,bug_report,get_friends_add,
             add_conversation_participent,delete_conversation_participent,
-            delete_group,quit_conversation
+            delete_group,quit_conversation,
+            get_communities,add_favorite
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

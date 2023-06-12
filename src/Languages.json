@@ -3,14 +3,14 @@
         "NavBar":{
             "Open SideMenu":"Open SideMenu",
             "Search in friends":"Search in friends",
-            "Search in projects":"Search in projects",
+            "Search in communities":"Search in communities",
             "Search in messages":"Search in messages",
             "Close":"Close",
             "Minimize":"Minimize",
             "Maximize":"Maximize"
         },
         "SideBar":{
-            "Projects":"Projects",
+            "Communities":"Communities",
             "Messages":"Messages",
             "Friends":"Friends",
             "Profile":"Profile"
@@ -18,7 +18,8 @@
         "Login":{
             "Email":"Email",
             "Password":"Password",
-            "Login":"Login"
+            "Login":"Login",
+            "Logo":"Logo"
         },
         "SignUp":{
             "Profile picture":"Profile picture",
@@ -30,7 +31,8 @@
             "Confirm Password":"Confirm password",
             "Username":"Username",
             "SignUp":"SignUp",
-            "All fields are required":"All fields are required"
+            "All fields are required":"All fields are required",
+            "Logo":"Logo"
         },
         "ForgotPass":{
             "Go Back":"Go Back",
@@ -48,6 +50,14 @@
             "Code":"Code",
             "Wrong code":"Wrong code",
             "Validate":"Validate"
+        },
+        "Communities":{
+            "Our Communities":"Our Communities",
+            "Create Community":"Create Community",
+            "Create a New Community":"Create a New Community",
+            "Community Title :":"Community Title :",
+            "Community Image :":"Community Image :",
+            "Create":"Create"
         },
         "Friends":{
             "Your Friends":"Your Friends",

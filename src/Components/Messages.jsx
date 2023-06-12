@@ -109,6 +109,7 @@ function ShowGroupInfo(){
 }
 function AddMembers(){
   const [Friends,SetFriends] = useState([]);
+
   const {Group,SetGroup,SetImgPreview} = useContext(Messages_Context);
   const {ActionBar_Active,SetActionBar_content,SetActionBar_title} = useContext(ActionBar_Context);
   const {Account} = useContext(Profile_Context);
@@ -159,7 +160,6 @@ function CreateGroupe(){
   
   const {Group,SetGroup,ImgPreview,SetImgPreview,Update} = useContext(Messages_Context);
   const {ActionBar_Active,SetActionBar_content,SetActionBar_Active,SetActionBar_title} = useContext(ActionBar_Context);
-  const {THEME} = useContext(Main_Context);
   const { Account } = useContext(Profile_Context);
 
   const imageInput = useRef(null);
@@ -172,7 +172,6 @@ function CreateGroupe(){
   },[ActionBar_Active]);
     
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].background).color);
-    const [SearchPH,SetSearchPH] = useState('');
     useEffect(()=>{
         SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
     },[Account.theme]);
@@ -199,6 +198,7 @@ function CreateGroupe(){
 
   return (
     <>
+      
       <ul className='Messages-CreateGroupe'>
         <li>
           <span>{Language[Account.language]["Messages"]['Group Name :']}</span>
@@ -268,9 +268,6 @@ export default function Messages() {
                 <></>
               )
             }
-            <div>
-                
-            </div>
             <div>
               <button onClick={CreateGroupeAction}>{Language[Account.language]["Messages"]['Create Group']}</button>
             </div>

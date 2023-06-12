@@ -1,22 +1,28 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Container from './Global/Container';
 import Language from '../Languages.json';
+import themeJSON from '../Theme.json';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import Logo from '../assets/logo.svg'
+import IImage from '../assets/Image-Icon.svg';
 import "./SignUp.css";
 import { Main_Context } from "../Contexts/MainContext";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Profile_Context } from '../Contexts/ProfileContext';
+import CssFilterConverter from 'css-filter-converter';
 
 
 export default function SignUp() {
     
     const [AddAccount,setAddAccount] = useState({photo:'', first_name:'', last_name:'',email:'',password:'', confirm_password:'', username:''});
+    const [ImgPreview,SetImgPreview] = useState(null);
     const [flash,setFlash] = useState('')
     const {Account,getAccount} = useContext(Profile_Context);
+    const HTF = CssFilterConverter.hexToFilter;
+    const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
     const Navigator = useNavigate();
-   
+    const imageInput = useRef(null);
     
     const SignupAction = async()=>{
         
@@ -48,13 +54,21 @@ export default function SignUp() {
             
         })
       }
-
+      const handleimage = (e)=>{
+        if (e.target.files[0] && /image\/./.test(e.target.files[0].type)){
+        setAddAccount({...AddAccount,image:e.target.files[0]});
+          const imageUrl = URL.createObjectURL(e.target.files[0]);
+          SetImgPreview(imageUrl);
+        }
+      }
   return (
     <Container>
         <div className='SignUp'>
-            <b className="Login-flash">{flash}</b>
-            <div className='image-input'>
-                <input type="file" alt={Language[Account.language]['SignUp']['Profile picture']} onChange={(e)=>/image\/./.test(e.target.files[0].type) ? setAddAccount({...AddAccount,photo:e.target.files[0]}) : null}/>
+            <img src={Logo} alt={Language[Account.language]['SignUp']["Logo"]} height={'10%'}  style={{ 'filter':HTF(themeJSON[Account.theme].text).color }} />
+            {flash ? <b className="Login-flash">{flash}</b> : <></>}
+            <div className='SignUp-image-input'>
+                <input type="file" ref={imageInput} onChange={handleimage} style={{ display:'none' }}/>
+                <img src={ImgPreview ? ImgPreview : IImage} onClick={()=>imageInput.current.click()} alt={Language[Account.language]['SignUp']['Profile picture']} style={{ filter:ImgPreview ? null : SVG_filter,height:'100px',borderRadius:"100%" }} />
             </div>
 
             <div className='name'>

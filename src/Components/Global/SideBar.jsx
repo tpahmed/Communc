@@ -54,12 +54,12 @@ export default function SideBar() {
     <div className="SideBarContainer">
       <div className="SideBar">
 
-        <div onClick={()=>Navigator('/projects')}>
+        <div onClick={()=>Navigator('/communities')}>
           <div>
-                <img src={PCube} alt={Language[LANG]['SideBar']['Projects']} style={{ 'filter':SVG_filter }}/>
+                <img src={PCube} alt={Language[LANG]['SideBar']['Communities']} style={{ 'filter':SVG_filter }}/>
           </div>
           <div>
-            {Language[LANG]['SideBar']['Projects']}
+            {Language[LANG]['SideBar']['Communities']}
           </div>
         </div>
         <div>
