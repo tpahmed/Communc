@@ -54,7 +54,6 @@ export default function ConversationMessages() {
     function connectWS(){
         const ws = new WebSocket('ws://localhost:4055/messages');
             ws.onmessage = (msg)=>{
-                console.log(msg.data)
                 if (JSON.parse(msg.data).type == 'refresh' && JSON.parse(msg.data).data == selected){
                     LoadMessages();
                 }

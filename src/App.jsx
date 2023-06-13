@@ -16,6 +16,7 @@ import Messages from './Components/Messages';
 import Profile from './Components/Profile';
 import { Profile_Context } from './Contexts/ProfileContext';
 import Communities from './Components/communities';
+import Community from './Components/Communities/Community';
 
 function App() {
   // const [name,setName] = useState('');
@@ -43,6 +44,7 @@ function App() {
         <AnimatePresence>
           <Routes>
               <Route index path='/communities' element={<Communities/>}/>
+              <Route index path='/communities/:id' element={<Community/>}/>
               <Route index path='/profile' element={<Profile/>}/>
               <Route index path='/friends' element={<Friends/>}/>
               <Route index path='/messages' element={<Messages/>}/>

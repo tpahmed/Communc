@@ -11,6 +11,7 @@ import Container from "./Global/Container";
 import { invoke } from "@tauri-apps/api";
 import { ActionBar_Context } from "../Contexts/ActionBarContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateCommunity(){
 
@@ -28,14 +29,14 @@ function CreateCommunity(){
         SetImgPreview(null);
     }
   },[ActionBar_Active]);
-    
+  
     useEffect(()=>{
         SetSVG_filter(HTF(themeJSON[Account.theme].text).color);
     },[Account.theme]);
   
   const handleimage = (e)=>{
     if (e.target.files[0] && /image\/./.test(e.target.files[0].type)){
-        SetNewCommunity({...NewCommunity,image:e.target.files[0]});
+      SetNewCommunity({...NewCommunity,image:e.target.files[0]});
       const imageUrl = URL.createObjectURL(e.target.files[0]);
       SetImgPreview(imageUrl);
     }
@@ -85,10 +86,10 @@ export default function Communities() {
     const HTF = CssFilterConverter.hexToFilter;
     const [SVG_filter,SetSVG_filter] = useState(HTF(themeJSON[Account.theme].text).color);
     const [Communs,setCommunities] = useState([]);
+    const Navigator = useNavigate();
     async function Update(){
         const result = await invoke('get_communities',{token:sessionStorage.getItem('token')});
         setCommunities(JSON.parse(result).msg);
-        console.log(Communs)
     }
     async function Favorite(id){
         await invoke('add_favorite',{token:sessionStorage.getItem('token'),id:`${id}`});
@@ -125,9 +126,9 @@ export default function Communities() {
                     Communs.map((e)=>{
                         
                         return (
-                            <div className="Communities-Community" key={e.id}>
+                            <div className="Communities-Community" key={e.id} onClick={()=>Navigator(`/communities/${e.id}`)}>
                                 <img src={e.image} alt={e.title} />
-                                <img src={SFavorite} onClick={()=>Favorite(e.id)} style={{ filter: `${HTF(themeJSON[Account.theme][e.favorite ? "yellow" : "primary"]).color} drop-shadow(1px 0 0  var(--yellow)) drop-shadow(-1px 0 0  var(--yellow)) drop-shadow(0 -1px 0  var(--yellow)) drop-shadow(0 1px 0 var(--yellow))`}}/>
+                                <img src={SFavorite} onClick={(e)=>{e.preventDefault();Favorite(e.id)}} style={{ filter: `${HTF(themeJSON[Account.theme][e.favorite ? "yellow" : "primary"]).color} drop-shadow(1px 0 0  var(--yellow)) drop-shadow(-1px 0 0  var(--yellow)) drop-shadow(0 -1px 0  var(--yellow)) drop-shadow(0 1px 0 var(--yellow))`}}/>
                                 <h3>{e.title}</h3>
                             </div>
                         )
