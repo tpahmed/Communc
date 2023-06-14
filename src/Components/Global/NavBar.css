@@ -8,6 +8,7 @@
     border-radius: .4em;
     height: 2.5em;
     justify-content: space-between;
+    box-shadow: 10px 10px 10px rgba(0,0, 0, .2);
     user-select: none;
     align-items: center;
     -webkit-border-radius: .4em;

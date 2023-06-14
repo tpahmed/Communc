@@ -29,6 +29,10 @@
     justify-content: space-between;
     align-items: center;
 }
+.ConversationMessages > div > div> span{
+    max-width: 10em;
+    overflow-x: scroll;
+}
 .ConversationMessages > div > div > img:first-of-type{
     cursor: pointer;
 }

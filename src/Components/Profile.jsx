@@ -185,7 +185,6 @@ function ChangeLanguage(){
             <ul>
                 {
                     Object.keys(Language).map((e)=>{
-                        console.log(e)
                         return (
                             <li key={e} onClick={()=>SetAccount({...Account,language:e})} style={e == Account.language ? { borderColor:'var(--green)' } : null}>{e}</li>
                         )

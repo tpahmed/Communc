@@ -59,6 +59,21 @@
             "Community Image :":"Community Image :",
             "Create":"Create"
         },
+        "Community":{
+            "By":"By",
+            "Posts :":"Posts :",
+            "Total Points :":"Total Points :",
+            "New Post":"New Post"
+        },
+        "Post":{
+            "Create Your Post":"Create Your Post",
+            "Tell Us Something":"Tell Us Something",
+            "Attachment":"Attachment",
+            "Video Uploaded":"Video Uploaded",
+            "Create":"Create",
+            "Cancel":"Cancel",
+            "Vote":"Vote"
+        },
         "Friends":{
             "Your Friends":"Your Friends",
             "Requests":"Requests",
@@ -139,5 +154,468 @@
             "No account with this email":"No account with this email"
         }
 
+    },
+    "FRA":{
+        "NavBar":{
+        "Open SideMenu":"Ouvrir le menu latéral",
+        "Search in friends":"Rechercher parmi les amis",
+        "Search in communities":"Rechercher parmi les communautés",
+        "Search in messages":"Rechercher dans les messages",
+        "Close":"Fermer",
+        "Minimize":"Réduire",
+        "Maximize":"Agrandir"
+        },
+        "SideBar":{
+        "Communities":"Communautés",
+        "Messages":"Messages",
+        "Friends":"Amis",
+        "Profile":"Profil"
+        },
+        "Login":{
+        "Email":"Email",
+        "Password":"Mot de passe",
+        "Login":"Connexion",
+        "Logo":"Logo"
+        },
+        "SignUp":{
+        "Profile picture":"Photo de profil",
+        "Password Confirmation must be identical":"La confirmation du mot de passe doit être identique",
+        "First Name":"Prénom",
+        "Last Name":"Nom",
+        "Email":"Email",
+        "Password":"Créer un mot de passe",
+        "Confirm Password":"Confirmer le mot de passe",
+        "Username":"Nom d'utilisateur",
+        "SignUp":"S'inscrire",
+        "All fields are required":"Tous les champs sont obligatoires",
+        "Logo":"Logo"
+        },
+        "ForgotPass":{
+        "Go Back":"Revenir en arrière",
+        "Email":"Email",
+        "Send":"Envoyer",
+        "Go Back to Login":"Revenir à la connexion",
+        "Please enter Your new Password":"Veuillez entrer votre nouveau mot de passe",
+        "Password":"Mot de passe",
+        "Confirm Password":"Confirmer le mot de passe",
+        "Change":"Changer",
+        "Change Email":"Changer d'email",
+        "Please enter the code sent to ":"Veuillez entrer le code envoyé à ",
+        "Password Confirmation must be identical":"La confirmation du mot de passe doit être identique",
+        "Internal error please try again":"Erreur interne, veuillez réessayer",
+        "Code":"Code",
+        "Wrong code":"Code incorrect",
+        "Validate":"Valider"
+        },
+        "Communities":{
+        "Our Communities":"Nos communautés",
+        "Create Community":"Créer une communauté",
+        "Create a New Community":"Créer une nouvelle communauté",
+        "Community Title :":"Titre de la communauté :",
+        "Community Image :":"Image de la communauté :",
+        "Create":"Créer"
+        },
+        "Community":{
+        "By":"Par",
+        "Posts :":"Publications :",
+        "Total Points :":"Points totaux :",
+        "New Post":"Nouvelle publication"
+        },
+        "Post":{
+        "Create Your Post":"Créer votre publication",
+        "Tell Us Something":"Dites-nous quelque chose",
+        "Attachment":"Pièce jointe",
+        "Video Uploaded":"Vidéo téléchargée",
+        "Create":"Créer",
+        "Cancel":"Annuler",
+        "Vote":"Voter"
+        },
+        "Friends":{
+        "Your Friends":"Vos amis",
+        "Requests":"Demandes",
+        "Add Friends":"Ajouter des amis",
+        "Add a new Friend":"Ajouter un nouvel ami",
+        "Message":"Message",
+        "Username":"Nom d'utilisateur",
+        "Send friend request":"Envoyer une demande d'ami",
+        "Cancel friend request":"Annuler la demande d'ami",
+        "User Not Found :(":"Utilisateur introuvable :(",
+        "Decline friend request":"Refuser la demande d'ami",
+        "Accept friend request":"Accepter la demande d'ami",
+        "Incoming Requests":"Demandes entrantes",
+        "No Friend Request Recieved":"Aucune demande d'ami reçue"
+        },
+        "ActionBar":{
+        "Close":"Fermer"
+        },
+        "Messages":{
+        "Your Messages":"Vos messages",
+        "Create Group":"Créer un groupe",
+        "Create a New Group":"Créer un nouveau groupe",
+        "Group Info":"Informations sur le groupe",
+        "Group Name :":"Nom du groupe :",
+        "Group Name":"Nom du groupe",
+        "Group Image :":"Image du groupe :",
+        "Group Image":"Image du groupe",
+        "Group Members :":"Membres du groupe :",
+        "Chef":"Chef",
+        "Delete group":"Supprimer le groupe",
+        "Leave Groupe":"Quitter le groupe",
+        "Add Members":"Ajouter des membres",
+        "Groupe Image":"Image du groupe",
+        "More Info":"Plus d'informations",
+        "Select Friends to Add":"Sélectionnez des amis à ajouter",
+        "Create":"Créer",
+        "Selected":"Sélectionné",
+        "Done":"Terminé"
+        },
+        "ConversationMessages":{
+        "Send":"Envoyer",
+        "Send Image":"Envoyer une image",
+        "You":"Vous",
+        "Image Preview":"Aperçu de l'image",
+        "Cancel Image Upload":"Annuler le téléchargement de l'image"
+        },
+        "Profile":{
+        "Your Profile":"Votre profil",
+        "Logout":"Déconnexion",
+        "Profile Picture":"Photo de profil",
+        "Profile Picture Preview":"Aperçu de la photo de profil",
+        "Edit First and Last Name":"Modifier le prénom et le nom",
+        "Change Email":"Changer d'email",
+        "Change Password":"Changer de mot de passe",
+        "Report bug":"Signaler un bug",
+        "Change Theme":"Changer de thème",
+        "Change Language":"Changer de langue",
+        "Change Name":"Changer de nom",
+        "First Name:":"Prénom :",
+        "Last Name:":"Nom :",
+        "Upload":"Télécharger",
+        "Done":"Terminé",
+        "Email:":"Email :",
+        "Old Password:":"Ancien mot de passe :",
+        "New Password:":"Nouveau mot de passe :",
+        "Confirm Password:":"Confirmer le mot de passe :",
+        "Password and Password Confirmation must be identical":"Le mot de passe et la confirmation du mot de passe doivent être identiques",
+        "Select Language:":"Sélectionner la langue :",
+        "Select Theme:":"Sélectionner le thème :",
+        "Bug Description:":"Description du bug :",
+        "Send":"Envoyer"
+        },
+        "BackEndErrors":{
+        "Email already in use":"Email déjà utilisé",
+        "Password is Wrong":"Le mot de passe est incorrect",
+        "Wrong Credentials":"Identifiants incorrects",
+        "No account with this email":"Aucun compte avec cet email"
+        }
+        },
+        "DEU":{
+            "NavBar":{
+            "Open SideMenu":"Seitenmenü öffnen",
+            "Search in friends":"In Freunden suchen",
+            "Search in communities":"In Communities suchen",
+            "Search in messages":"In Nachrichten suchen",
+            "Close":"Schließen",
+            "Minimize":"Minimieren",
+            "Maximize":"Maximieren"
+            },
+            "SideBar":{
+            "Communities":"Communities",
+            "Messages":"Nachrichten",
+            "Friends":"Freunde",
+            "Profile":"Profil"
+            },
+            "Login":{
+            "Email":"E-Mail",
+            "Password":"Passwort",
+            "Login":"Anmelden",
+            "Logo":"Logo"
+            },
+            "SignUp":{
+            "Profile picture":"Profilbild",
+            "Password Confirmation must be identical":"Passwortbestätigung muss identisch sein",
+            "First Name":"Vorname",
+            "Last Name":"Nachname",
+            "Email":"E-Mail",
+            "Password":"Passwort erstellen",
+            "Confirm Password":"Passwort bestätigen",
+            "Username":"Benutzername",
+            "SignUp":"Registrieren",
+            "All fields are required":"Alle Felder sind erforderlich",
+            "Logo":"Logo"
+            },
+            "ForgotPass":{
+            "Go Back":"Zurück",
+            "Email":"E-Mail",
+            "Send":"Senden",
+            "Go Back to Login":"Zurück zur Anmeldung",
+            "Please enter Your new Password":"Bitte geben Sie Ihr neues Passwort ein",
+            "Password":"Passwort",
+            "Confirm Password":"Passwort bestätigen",
+            "Change":"Ändern",
+            "Change Email":"E-Mail ändern",
+            "Please enter the code sent to ":"Bitte geben Sie den Code ein, der gesendet wurde an ",
+            "Password Confirmation must be identical":"Passwortbestätigung muss identisch sein",
+            "Internal error please try again":"Interner Fehler, bitte versuchen Sie es erneut",
+            "Code":"Code",
+            "Wrong code":"Falscher Code",
+            "Validate":"Bestätigen"
+            },
+            "Communities":{
+            "Our Communities":"Unsere Communities",
+            "Create Community":"Community erstellen",
+            "Create a New Community":"Neue Community erstellen",
+            "Community Title :":"Community-Titel :",
+            "Community Image :":"Community-Bild :",
+            "Create":"Erstellen"
+            },
+            "Community":{
+            "By":"Von",
+            "Posts :":"Beiträge :",
+            "Total Points :":"Gesamtpunkte :",
+            "New Post":"Neuer Beitrag"
+            },
+            "Post":{
+            "Create Your Post":"Beitrag erstellen",
+            "Tell Us Something":"Erzählen Sie uns etwas",
+            "Attachment":"Anhang",
+            "Video Uploaded":"Video hochgeladen",
+            "Create":"Erstellen",
+            "Cancel":"Abbrechen",
+            "Vote":"Abstimmen"
+            },
+            "Friends":{
+            "Your Friends":"Ihre Freunde",
+            "Requests":"Anfragen",
+            "Add Friends":"Freunde hinzufügen",
+            "Add a new Friend":"Neuen Freund hinzufügen",
+            "Message":"Nachricht",
+            "Username":"Benutzername",
+            "Send friend request":"Freundschaftsanfrage senden",
+            "Cancel friend request":"Freundschaftsanfrage abbrechen",
+            "User Not Found :(":"Benutzer nicht gefunden :(",
+            "Decline friend request":"Freundschaftsanfrage ablehnen",
+            "Accept friend request":"Freundschaftsanfrage annehmen",
+            "Incoming Requests":"Eingehende Anfragen",
+            "No Friend Request Recieved":"Keine Freundschaftsanfrage erhalten"    },
+            "ActionBar":{
+                "Close":"Schließen"
+            },
+            "Messages":{
+                "Your Messages":"Ihre Nachrichten",
+                "Create Group":"Gruppe erstellen",
+                "Create a New Group":"Neue Gruppe erstellen",
+                "Group Info":"Gruppeninformationen",
+                "Group Name :":"Gruppenname :",
+                "Group Name":"Gruppenname",
+                "Group Image :":"Gruppenbild :",
+                "Group Image":"Gruppenbild",
+                "Group Members :":"Gruppenmitglieder :",
+                "Chef":"Leiter",
+                "Delete group":"Gruppe löschen",
+                "Leave Groupe":"Gruppe verlassen",
+                "Add Members":"Mitglieder hinzufügen",
+                "Groupe Image":"Gruppenbild",
+                "More Info":"Mehr Informationen",
+                "Select Friends to Add":"Freunde zum Hinzufügen auswählen",
+                "Create":"Erstellen",
+                "Selected":"Ausgewählt",
+                "Done":"Fertig"
+            },
+            "ConversationMessages":{
+                "Send":"Senden",
+                "Send Image":"Bild senden",
+                "You":"Sie",
+                "Image Preview":"Bildvorschau",
+                "Cancel Image Upload":"Bildupload abbrechen"
+            },
+            "Profile":{
+                "Your Profile":"Ihr Profil",
+                "Logout":"Abmelden",
+                "Profile Picture":"Profilbild",
+                "Profile Picture Preview":"Profilbild-Vorschau",
+                "Edit First and Last Name":"Vor- und Nachnamen bearbeiten",
+                "Change Email":"E-Mail ändern",
+                "Change Password":"Passwort ändern",
+                "Report bug":"Fehler melden",
+                "Change Theme":"Thema ändern",
+                "Change Language":"Sprache ändern",
+                "Change Name":"Namen ändern",
+                "First Name:":"Vorname:",
+                "Last Name:":"Nachname:",
+                "Upload":"Hochladen",
+                "Done":"Fertig",
+                "Email:":"E-Mail:",
+                "Old Password:":"Altes Passwort:",
+                "New Password:":"Neues Passwort:",
+                "Confirm Password:":"Passwort bestätigen:",
+                "Password and Password Confirmation must be identical":"Passwort und Passwortbestätigung müssen identisch sein",
+                "Select Language:":"Sprache auswählen:",
+                "Select Theme:":"Thema auswählen:",
+                "Bug Description:":"Fehlerbeschreibung:",
+                "Send":"Senden"
+            },
+            "BackEndErrors":{
+                "Email already in use":"E-Mail bereits in Verwendung",
+                "Password is Wrong":"Passwort ist falsch",
+                "Wrong Credentials":"Falsche Anmeldeinformationen",
+                "No account with this email":"Kein Konto mit dieser E-Mail-Adresse"
+            }
+        }
+    ,"SPA":{
+        "NavBar":{
+        "Open SideMenu":"Abrir menú lateral",
+        "Search in friends":"Buscar en amigos",
+        "Search in communities":"Buscar en comunidades",
+        "Search in messages":"Buscar en mensajes",
+        "Close":"Cerrar",
+        "Minimize":"Minimizar",
+        "Maximize":"Maximizar"
+        },
+        "SideBar":{
+        "Communities":"Comunidades",
+        "Messages":"Mensajes",
+        "Friends":"Amigos",
+        "Profile":"Perfil"
+        },
+        "Login":{
+        "Email":"Correo electrónico",
+        "Password":"Contraseña",
+        "Login":"Iniciar sesión",
+        "Logo":"Logotipo"
+        },
+        "SignUp":{
+        "Profile picture":"Foto de perfil",
+        "Password Confirmation must be identical":"La confirmación de contraseña debe ser idéntica",
+        "First Name":"Nombre",
+        "Last Name":"Apellido",
+        "Email":"Correo electrónico",
+        "Password":"Crear contraseña",
+        "Confirm Password":"Confirmar contraseña",
+        "Username":"Nombre de usuario",
+        "SignUp":"Registrarse",
+        "All fields are required":"Todos los campos son obligatorios",
+        "Logo":"Logotipo"
+        },
+        "ForgotPass":{
+        "Go Back":"Volver",
+        "Email":"Correo electrónico",
+        "Send":"Enviar",
+        "Go Back to Login":"Volver a iniciar sesión",
+        "Please enter Your new Password":"Ingrese su nueva contraseña",
+        "Password":"Contraseña",
+        "Confirm Password":"Confirmar contraseña",
+        "Change":"Cambiar",
+        "Change Email":"Cambiar correo electrónico",
+        "Please enter the code sent to ":"Ingrese el código enviado a ",
+        "Password Confirmation must be identical":"La confirmación de contraseña debe ser idéntica",
+        "Internal error please try again":"Error interno, por favor inténtelo nuevamente",
+        "Code":"Código",
+        "Wrong code":"Código incorrecto",
+        "Validate":"Validar"
+        },
+        "Communities":{
+        "Our Communities":"Nuestras comunidades",
+        "Create Community":"Crear comunidad",
+        "Create a New Community":"Crear una nueva comunidad",
+        "Community Title :":"Título de la comunidad :",
+        "Community Image :":"Imagen de la comunidad :",
+        "Create":"Crear"
+        },
+        "Community":{
+        "By":"Por",
+        "Posts :":"Publicaciones :",
+        "Total Points :":"Puntos totales :",
+        "New Post":"Nueva publicación"
+        },
+        "Post":{
+        "Create Your Post":"Crear tu publicación",
+        "Tell Us Something":"Cuéntanos algo",
+        "Attachment":"Adjunto",
+        "Video Uploaded":"Video cargado",
+        "Create":"Crear",
+        "Cancel":"Cancelar",
+        "Vote":"Votar"
+        },
+        "Friends":{
+        "Your Friends":"Tus amigos",
+        "Requests":"Solicitudes",
+        "Add Friends":"Agregar amigos",
+        "Add a new Friend":"Agregar un nuevo amigo",
+        "Message":"Mensaje",
+        "Username":"Nombre de usuario",
+        "Send friend request":"Enviar solicitud de amistad",
+        "Cancel friend request":"Cancelar solicitud de amistad",
+        "User Not Found :(":"Usuario no encontrado :(",
+        "Decline friend request":"Rechazar solicitud de amistad",
+        "Accept friend request":"Aceptar solicitud de amistad",
+        "Incoming Requests":"Solicitudes entrantes",
+        "No Friend Request Recieved":"No se ha recibido ninguna solicitud de amistad"
+    },
+    "ActionBar":{
+        "Close":"Cerrar"
+    },
+    "Messages":{
+        "Your Messages":"Tus mensajes",
+        "Create Group":"Crear grupo",
+        "Create a New Group":"Crear un nuevo grupo",
+        "Group Info":"Información del grupo",
+        "Group Name :":"Nombre del grupo :",
+        "Group Name":"Nombre del grupo",
+        "Group Image :":"Imagen del grupo :",
+        "Group Image":"Imagen del grupo",
+        "Group Members :":"Miembros del grupo :",
+        "Chef":"Líder",
+        "Delete group":"Eliminar grupo",
+        "Leave Groupe":"Abandonar grupo",
+        "Add Members":"Agregar miembros",
+        "Groupe Image":"Imagen del grupo",
+        "More Info":"Más información",
+        "Select Friends to Add":"Seleccionar amigos para agregar",
+        "Create":"Crear",
+        "Selected":"Seleccionado",
+        "Done":"Listo"
+    },
+    "ConversationMessages":{
+        "Send":"Enviar",
+        "Send Image":"Enviar imagen",
+        "You":"Tú",
+        "Image Preview":"Vista previa de la imagen",
+        "Cancel Image Upload":"Cancelar carga de imagen"
+    },
+    "Profile":{
+        "Your Profile":"Tu perfil",
+        "Logout":"Cerrar sesión",
+        "Profile Picture":"Foto de perfil",
+        "Profile Picture Preview":"Vista previa de la foto de perfil",
+        "Edit First and Last Name":"Editar nombre y apellido",
+        "Change Email":"Cambiar correo electrónico",
+        "Change Password":"Cambiar contraseña",
+        "Report bug":"Reportar error",
+        "Change Theme":"Cambiar tema",
+        "Change Language":"Cambiar idioma",
+        "Change Name":"Cambiar nombre",
+        "First Name:":"Nombre:",
+        "Last Name:":"Apellido:",
+        "Upload":"Cargar",
+        "Done":"Listo",
+        "Email:":"Correo electrónico:",
+        "Old Password:":"Contraseña anterior:",
+        "New Password:":"Nueva contraseña:",
+        "Confirm Password:":"Confirmar contraseña:",
+        "Password and Password Confirmation must be identical":"La contraseña y la confirmación de contraseña deben ser idénticas",
+        "Select Language:":"Seleccionar idioma:",
+        "Select Theme:":"Seleccionar tema:",
+        "Bug Description:":"Descripción del error:",
+        "Send":"Enviar"
+    },
+    "BackEndErrors":{
+        "Email already in use":"El correo electrónico ya está en uso",
+        "Password is Wrong":"La contraseña es incorrecta",
+        "Wrong Credentials":"Credenciales incorrectas",
+        "No account with this email":"No hay ninguna cuenta con este correo electrónico"
     }
+}
+
+
 }

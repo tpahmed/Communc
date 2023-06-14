@@ -68,7 +68,6 @@
     
 }
 .Communities-Community{
-    --color : yellow;
     position: relative;
     margin: .5em 1em .5em 1em;
     background-color: var(--color);

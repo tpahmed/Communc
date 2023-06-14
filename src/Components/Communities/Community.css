@@ -1,0 +1,155 @@
+.Community{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color);
+    background-color: var(--container-background);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.Community-Data{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 0;
+    user-select: text;
+    padding: 1.5em .5em 1.5em .5em;
+    top: 0;
+    border-right: 1px solid var(--color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Community-Data > *{
+    margin-top: 1em;
+}
+.Community-Data > img{
+    max-width: 70%;
+    border: 2px solid var(--color);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.Community-Data > h4{
+    font-size: smaller;
+    color: var(--link);
+}
+.Community-Data > div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.Community-Data > div b{
+    color: var(--accent);
+}
+.Community-Data > button{
+    cursor: pointer;
+    padding: .5em 1.5em .5em 1.5em;
+    font-weight: 600;
+    transition: all .3s ease;
+    width: 80%;
+    margin-top: 5em;
+    border: 0;
+    color: var(--background);
+    font-size: large;
+    background-color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.Community-Data > button:hover{
+    color: var(--accent);
+    background-color: var(--background);
+}
+.Community-Data > button:focus{
+    outline: 0;
+}
+.Community-Posts{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 70%;
+    border-left: 1px solid var(--color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+.Community-Posts::-webkit-scrollbar-thumb{
+    background-color: var(--color);
+}
+.Community-Post{
+    position: relative;
+    right: 0;
+    margin: 1em;
+    padding: 1em;
+    height: fit-content;
+    width: 70%;
+    border: 1px solid var(--color);
+    border-radius: .3em;
+    display: flex;
+    flex-direction: column;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.Community-Post > div{
+    position: relative;
+    right: 0;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+}
+.Community-Post > div > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.Community-Post > div:last-of-type{
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: .3em;
+    width: fit-content !important;
+    padding: .5em;
+    margin-top: 1em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+.Community-Post > div > div span:last-of-type{
+    color: var(--link);
+    font-size: .8em;
+    user-select: text;
+}
+.Community-Post > div:first-of-type img{
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+.Community-Post > div:last-of-type img{
+    width: 1.5em;
+}
+.Community-Post > img,.Community-Post > video{
+    width: 100%;
+    margin-top: .5em;
+}

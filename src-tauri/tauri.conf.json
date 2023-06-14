@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "W-HUB",
-    "version": "0.0.0"
+    "productName": "Communc",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -33,10 +33,9 @@
         "icons/32x32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
-        "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.whub.dev",
+      "identifier": "com.communc.dev",
       "targets": "all"
     },
     "security": {
@@ -51,7 +50,7 @@
         "transparent": true,
         "fullscreen": false,
         "resizable": true,
-        "title": "W-HUB",
+        "title": "communc",
         "width": 800,
         "height": 600,
         "minWidth": 735,

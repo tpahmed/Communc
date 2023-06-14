@@ -23,6 +23,9 @@ export default function ProfileContext({children}) {
     await getAccount();
     return '';
   }
+  useEffect(()=>{
+    getAccount();
+  },[])
   return (
     <Profile_Context.Provider value={{ Account,SetAccount,getAccount,CommitChanges }}>
       {children}

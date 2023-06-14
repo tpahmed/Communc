@@ -92,8 +92,9 @@ export default function Communities() {
         setCommunities(JSON.parse(result).msg);
     }
     async function Favorite(id){
-        await invoke('add_favorite',{token:sessionStorage.getItem('token'),id:`${id}`});
-        Update();
+      console.log(id)
+      await invoke('add_favorite',{token:sessionStorage.getItem('token'),id:`${id}`});
+      Update();
 
     }
     
@@ -126,9 +127,9 @@ export default function Communities() {
                     Communs.map((e)=>{
                         
                         return (
-                            <div className="Communities-Community" key={e.id} onClick={()=>Navigator(`/communities/${e.id}`)}>
+                            <div className="Communities-Community" style={{ "--color":e.color }} key={e.id} onClick={()=>Navigator(`/communities/${e.id}`)}>
                                 <img src={e.image} alt={e.title} />
-                                <img src={SFavorite} onClick={(e)=>{e.preventDefault();Favorite(e.id)}} style={{ filter: `${HTF(themeJSON[Account.theme][e.favorite ? "yellow" : "primary"]).color} drop-shadow(1px 0 0  var(--yellow)) drop-shadow(-1px 0 0  var(--yellow)) drop-shadow(0 -1px 0  var(--yellow)) drop-shadow(0 1px 0 var(--yellow))`}}/>
+                                <img src={SFavorite} onClick={(ec)=>{Favorite(e.id);ec.stopPropagation();}} style={{ filter: `${HTF(themeJSON[Account.theme][e.favorite ? "yellow" : "primary"]).color} drop-shadow(1px 0 0  var(--yellow)) drop-shadow(-1px 0 0  var(--yellow)) drop-shadow(0 -1px 0  var(--yellow)) drop-shadow(0 1px 0 var(--yellow))`}}/>
                                 <h3>{e.title}</h3>
                             </div>
                         )

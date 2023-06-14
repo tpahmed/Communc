@@ -166,8 +166,10 @@
 .Profile-Change textarea{
     height: 70%;
     max-height: 90%;
+    min-height: 30%;
     width: 100%;
     max-width: 100%;
+    min-width: 80%;
 }
 
 .Profile-Change ul{

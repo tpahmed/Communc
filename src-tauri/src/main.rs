@@ -142,6 +142,12 @@ async fn add_favorite(token: &str,id: &str) -> Result<String,()> {
     let res = client.post("http://localhost:4055/favorite/add").form(&[("token",token),("id",id)]).send().await;
     Ok(res.unwrap().text().await.unwrap())
 }
+#[tauri::command]
+async fn vote_post(token: &str,id: &str,idcom: &str) -> Result<String,()> {
+    let client = reqwest::Client::new();
+    let res = client.post("http://localhost:4055/post/vote").form(&[("token",token),("id",id),("idcom",idcom)]).send().await;
+    Ok(res.unwrap().text().await.unwrap())
+}
 
 
 #[tauri::command]
@@ -193,7 +199,7 @@ fn main() {
             add_conversation_participent,delete_conversation_participent,
             delete_group,quit_conversation,
             get_communities,add_favorite,
-            community_data
+            community_data,vote_post
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
