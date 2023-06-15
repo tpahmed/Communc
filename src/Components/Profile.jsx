@@ -45,13 +45,13 @@ function ChangeImage(){
     return (
         <div className="Profile-Change">
             <input type="file" style={{ display:"none" }} ref={UploadInput} onChange={handleImage}/>
-            <img src={ImagePrev ? ImagePrev : Account.image} alt={Language["ENG"]["Profile"]["Profile Picture"]}/>
+            <img src={ImagePrev ? ImagePrev : Account.image} alt={Language[Account.language]["Profile"]["Profile Picture"]}/>
             
             <button onClick={()=>UploadInput.current.click()}>
-                {Language["ENG"]["Profile"]["Upload"]}
+                {Language[Account.language]["Profile"]["Upload"]}
             </button>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -67,15 +67,15 @@ function ChangeName(){
     return (
         <div className="Profile-Change">
             <div>
-                <span>{Language["ENG"]["Profile"]["First Name:"]}</span>
+                <span>{Language[Account.language]["Profile"]["First Name:"]}</span>
                 <input type="text" onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} value={Account.fname} onChange={(e)=>SetAccount({...Account,fname:e.target.value})} />
             </div>
             <div>
-                <span>{Language["ENG"]["Profile"]["Last Name:"]}</span>
+                <span>{Language[Account.language]["Profile"]["Last Name:"]}</span>
                 <input type="text" onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} value={Account.lname}  onChange={(e)=>SetAccount({...Account,lname:e.target.value})}/>
             </div>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -93,13 +93,13 @@ function ChangeEmail(){
     }
     return (
         <div className="Profile-Change">
-            <b className="Login-flash">{Language["ENG"]["BackEndErrors"][flash]}</b>
+            <b className="Login-flash">{Language[Account.language]["BackEndErrors"][flash]}</b>
             <div>
-                <span>{Language["ENG"]["Profile"]["Email:"]}</span>
+                <span>{Language[Account.language]["Profile"]["Email:"]}</span>
                 <input type="text" value={Account.email} onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} onChange={(e)=>SetAccount({...Account,email:e.target.value})} />
             </div>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -116,7 +116,7 @@ function ChangePassword(){
     },[ActionBar_Active]);
     const Done = async ()=>{
         if (conf_pass !== Account.new_pass){
-            return setFlash(Language["ENG"]["Profile"]["Password and Password Confirmation must be identical"]);
+            return setFlash(Language[Account.language]["Profile"]["Password and Password Confirmation must be identical"]);
         }
         const result = await CommitChanges();
         setFlash(result);
@@ -126,21 +126,21 @@ function ChangePassword(){
     }
     return (
         <div className="Profile-Change">
-            <b className="Login-flash">{Language["ENG"]["BackEndErrors"][flash]}</b>
+            <b className="Login-flash">{Language[Account.language]["BackEndErrors"][flash]}</b>
             <div>
-                <span>{Language["ENG"]["Profile"]["Old Password:"]}</span>
+                <span>{Language[Account.language]["Profile"]["Old Password:"]}</span>
                 <input type="password" value={Account.old_pass} onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} onChange={(e)=>SetAccount({...Account,old_pass:e.target.value})} />
             </div>
             <div>
-                <span>{Language["ENG"]["Profile"]["New Password:"]}</span>
+                <span>{Language[Account.language]["Profile"]["New Password:"]}</span>
                 <input type="password" value={Account.new_pass} onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} onChange={(e)=>SetAccount({...Account,new_pass:e.target.value})} />
             </div>
             <div>
-                <span>{Language["ENG"]["Profile"]["Confirm Password:"]}</span>
+                <span>{Language[Account.language]["Profile"]["Confirm Password:"]}</span>
                 <input type="password" value={conf_pass} onKeyDown={(e)=>e.key == 'Enter' ? Done() : null} onChange={(e)=>setConf_pass(e.target.value)} />
             </div>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -155,7 +155,7 @@ function ChangeTheme(){
     }
     return (
         <div className="Profile-Change">
-            <span>{Language["ENG"]["Profile"]["Select Theme:"]}</span>
+            <span>{Language[Account.language]["Profile"]["Select Theme:"]}</span>
             <ul>
                 {
                     Object.keys(themeJSON).map((e)=>{
@@ -166,7 +166,7 @@ function ChangeTheme(){
                 }
             </ul>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -181,7 +181,7 @@ function ChangeLanguage(){
     }
     return (
         <div className="Profile-Change">
-            <span>{Language["ENG"]["Profile"]["Select Language:"]}</span>
+            <span>{Language[Account.language]["Profile"]["Select Language:"]}</span>
             <ul>
                 {
                     Object.keys(Language).map((e)=>{
@@ -192,7 +192,7 @@ function ChangeLanguage(){
                 }
             </ul>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Done"]}
+                {Language[Account.language]["Profile"]["Done"]}
             </button>
         </div>
     )
@@ -207,10 +207,10 @@ function Reportbug(){
     }
     return (
         <div className="Profile-Change">
-            <span>{Language["ENG"]["Profile"]["Bug Description:"]}</span>
+            <span>{Language[Account.language]["Profile"]["Bug Description:"]}</span>
             <textarea cols="30" rows="10" value={Message} onChange={(e)=>SetMessage(e.target.value)}></textarea>
             <button onClick={Done}>
-                {Language["ENG"]["Profile"]["Send"]}
+                {Language[Account.language]["Profile"]["Send"]}
             </button>
         </div>
     )
@@ -235,37 +235,37 @@ export default function Profile() {
         Navigator('/login');
     }
     function Change_Image(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Profile Picture Preview"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Profile Picture Preview"]);
         SetActionBar_content(<ChangeImage/>)
         SetActionBar_Active(1);
     }
     function Change_Name(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Change Name"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Change Name"]);
         SetActionBar_content(<ChangeName/>)
         SetActionBar_Active(1);
     }
     function Change_Email(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Change Email"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Change Email"]);
         SetActionBar_content(<ChangeEmail/>)
         SetActionBar_Active(1);
     }
     function Change_Password(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Change Password"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Change Password"]);
         SetActionBar_content(<ChangePassword/>)
         SetActionBar_Active(1);
     }
     function Change_Theme(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Change Theme"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Change Theme"]);
         SetActionBar_content(<ChangeTheme/>)
         SetActionBar_Active(1);
     }
     function Change_Language(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Change Language"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Change Language"]);
         SetActionBar_content(<ChangeLanguage/>)
         SetActionBar_Active(1);
     }
     function Report_Bug(){
-        SetActionBar_title(Language["ENG"]["Profile"]["Report bug"]);
+        SetActionBar_title(Language[Account.language]["Profile"]["Report bug"]);
         SetActionBar_content(<Reportbug/>)
         SetActionBar_Active(1);
     }
@@ -273,33 +273,33 @@ export default function Profile() {
         <Container>
             <div className='Profile'>
                 <div className="Profile-TitleBar">
-                    <span>{Language["ENG"]["Profile"]["Your Profile"]}</span>
-                    <span onClick={Logout}>{Language["ENG"]["Profile"]["Logout"]} <img src={ILogout} alt={Language["ENG"]["Profile"]["Logout"]} style={{ filter:SVG_filter }} width={"40px"} height={"40px"} /></span>
+                    <span>{Language[Account.language]["Profile"]["Your Profile"]}</span>
+                    <span onClick={Logout}>{Language[Account.language]["Profile"]["Logout"]} <img src={ILogout} alt={Language[Account.language]["Profile"]["Logout"]} style={{ filter:SVG_filter }} width={"40px"} height={"40px"} /></span>
                 </div>
                 <div className="Profile-content">
-                    <img src={Account.image} alt={Language["ENG"]["Profile"]["Profile Picture"]} width={'160px'} height={'160px'} onClick={Change_Image} />
+                    <img src={Account.image} alt={Language[Account.language]["Profile"]["Profile Picture"]} width={'160px'} height={'160px'} onClick={Change_Image} />
                     <div>
                         <span>{Account.fname} {Account.lname}</span>
-                        <img onClick={Change_Name} src={IPen} alt={Language["ENG"]["Profile"]["Edit First and Last Name"]} width={'20px'} style={{ filter:HTF(themeJSON[Account.theme].text).color }} />
+                        <img onClick={Change_Name} src={IPen} alt={Language[Account.language]["Profile"]["Edit First and Last Name"]} width={'20px'} style={{ filter:HTF(themeJSON[Account.theme].text).color }} />
                     </div>
                     <span>@{Account.username}</span>
                     <div>
                         <button onClick={Change_Email}>
-                            {Language["ENG"]["Profile"]["Change Email"]}
+                            {Language[Account.language]["Profile"]["Change Email"]}
                         </button>
                         <button onClick={Change_Password}>
-                            {Language["ENG"]["Profile"]["Change Password"]}
+                            {Language[Account.language]["Profile"]["Change Password"]}
                         </button>
                         <button onClick={Report_Bug}>
-                            {Language["ENG"]["Profile"]["Report bug"]}
+                            {Language[Account.language]["Profile"]["Report bug"]}
                         </button>
                     </div>
                     <div>
                         <button onClick={Change_Theme}>
-                            {Language["ENG"]["Profile"]["Change Theme"]}
+                            {Language[Account.language]["Profile"]["Change Theme"]}
                         </button>
                         <button onClick={Change_Language}>
-                            {Language["ENG"]["Profile"]["Change Language"]}
+                            {Language[Account.language]["Profile"]["Change Language"]}
                         </button>
                     </div>
                 </div>
